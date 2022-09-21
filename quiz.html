@@ -57,32 +57,27 @@
         </nav>
     </header>
 
-    <section id="quiz-area">
-        <!-- Section Header -->
-        <h2>Test Your Regions Knowledge</h2>
+    <section>
+        <!-- Questions Counter (Question/Total Questions) -->
+        <div id="question-counter"></div>
 
-        <form id="config-form" method="GET">
-            <!-- Nick Name -->
-            <label for="nick_name">Nick Name</label>
-            <input type="text" id="nick_name" name="nick_name" required="required" />
+        <!-- Timer (Minutes:Seconds) -->
+        <div id="timer"></div>
 
-            <!-- Level Selection -->
-            <fieldset>
-                <legend>Level</legend>
-                <input type="radio" name="level" id="champion" value="champion" checked="checked">
-                <label for="champion">Champion</label>
+        <!-- Map Container -->
+        <div id="map-container">
+        </div>
 
-                <input type="radio" name="level" id="master" value="master">
-                <label for="master">Master</label>
+        <!-- Quesion -->
+        <h2 id="question-container"></h2>
 
-                <input type="radio" name="level" id="legendary" value="legendary">
-                <label for="legendary">Legendary</label>
-            </fieldset>
-
-            <!-- Submit Button -->
-            <button type="submit">Start</button>
-        </form>
-
+        <!-- Possuble Answers -->
+        <div class="answers-container">
+            <button id="answer-1"></button>
+            <button id="answer-2"></button>
+            <button id="answer-3"></button>
+            <button id="answer-4"></button>
+        </div>
     </section>
 
     <footer>
