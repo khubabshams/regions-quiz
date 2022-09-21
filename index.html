@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="RegionsQuiz is a website where you can test your geography and specially regions knowledge in a fun way.">
+    <meta name="keywords" content="regions, quiz, counrtries, geography">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Title -->
+    <title>Regions Quiz</title>
+</head>
+
+<body>
+
+    <header>
+        <!-- Logo -->
+        <a href="index.html">
+            <h1 id="logo">
+                RegionsQuiz
+            </h1>
+        </a>
+
+        <!-- Navigation Bar -->
+        <nav id="menu">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="#tips">
+                        Quick Tips
+                    </a>
+                </li>
+                <li>
+                    <a href="#scoreboards">
+                        ScoreBoards
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="quiz-config">
+        <!-- Section Header -->
+        <h2>Test Your Regions Knowledge</h2>
+
+        <form id="config-form">
+            <!-- Nick Name -->
+            <label for="nick_name">Nick Name</label>
+            <input type="text" id="nick_name" name="nick_name" required="required" />
+
+            <!-- Level Selection -->
+            <fieldset>
+                <legend>Level</legend>
+                <input type="radio" name="level" id="champion" value="champion" checked="checked">
+                <label for="champion">Champion</label>
+
+                <input type="radio" name="level" id="master" value="master">
+                <label for="master">Master</label>
+
+                <input type="radio" name="level" id="legendary" value="legendary">
+                <label for="legendary">Legendary</label>
+            </fieldset>
+        </form>
+    </section>
+</body>
+
+</html>
