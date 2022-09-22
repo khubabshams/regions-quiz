@@ -58,25 +58,37 @@
     </header>
 
     <section>
-        <!-- Questions Counter (Question/Total Questions) -->
-        <div id="question-counter"></div>
+        <!-- Final Score Message (Congratulations / Don't give up, try again!) -->
+        <h2 id="score-message"></h2>
 
-        <!-- Timer (Minutes:Seconds) -->
-        <div id="timer"></div>
+        <!-- Trophy -->
+        <span id="trophy"></span>
 
-        <!-- Map Container -->
-        <div id="map-container">
+        <!-- Ranking (#1, #2, #3, Top Ten)-->
+        <span id="ranking"></span>
+
+        <!-- Finishing time-->
+        <span id="finishing-time"></span>
+
+        <!-- Share on social media-->
+        <h3>Share</h2>
+        <div>
+            <a id="share-facebook" href="" target="_blank" rel="noopener noreferrer"
+                aria-label="Share your score result on Facebook (Opens in a new tab)">
+                <i class="fa-brands fa-square-facebook"></i>
+            </a>
+            <a id="share-twitter" href="" target="_blank" rel="noopener noreferrer"
+                aria-label="Share your score result on Twitter (Opens in a new tab)">
+                <i class="fa-brands fa-square-twitter"></i>
+            </a>
         </div>
 
-        <!-- Quesion -->
-        <h2 id="question-container"></h2>
-
-        <!-- Possible Answers -->
-        <div id="answers-container">
-            <button class="answer"></button>
-            <button class="answer"></button>
-            <button class="answer"></button>
-            <button class="answer"></button>
+        <!-- User Actions -->
+        <div class="action-buttons">
+            <button id="play-again"></button>
+            <a href="index.html" class="button">
+                Home
+            </a>
         </div>
     </section>
 
