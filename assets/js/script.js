@@ -1,3 +1,6 @@
+import {
+    getAllCountriesList
+} from './country_list.js';
 var score = 0;
 var time = 0;
 var correctAnswer = "";
@@ -32,7 +35,7 @@ function loadQuizPage() {
 function initiateQuiz() {
     // set question number/total questions
     let questionCounterElement = document.getElementById("question-counter");
-    
+
     questionCounterElement.innerText = `1/${getTotalQuestions()}`;
 
     // todo: set timer
@@ -40,7 +43,7 @@ function initiateQuiz() {
 /**
  * Set the current question number in question-counter
  */
- function setQuestionCounter() {
+function setQuestionCounter() {
     let questionCounterElement = document.getElementById("question-counter");
     let questionCounter = questionCounterElement.innerText.split("/");
 
@@ -50,19 +53,60 @@ function initiateQuiz() {
  * Load the question and answers and render it in quiz-main
  */
 function loadQuestion() {
+    // Get question data
+    let questionData = getQuestionData();
+    // Store the correct answer
+    correctAnswer = questionData.name;
+    // Render the question on page
+    document.getElementById("continent").innerText = questionData.continent;
+    document.getElementById("capital").innerText = questionData.capital;
 
 }
-
-
 // Helpers ---------------------------------
 /**
  * Get a cookie from the document cookies
  */
 function getCookie(cookiename) {
     // Get name followed by anything except a semicolon
-    var cookiestring = RegExp(cookiename + "=[^;]+").exec(document.cookie);
+    let cookiestring = RegExp(cookiename + "=[^;]+").exec(document.cookie);
     // Return everything after the equal sign, or an empty string if the cookie name not found
     return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./, "") : "");
+}
+/**
+ * Get a random question data from countries list and wrong answers
+ */
+function getQuestionData() {
+    /* 
+        return example: {
+        "name": "Afghanistan",
+        "code": "AF",
+        "phone": 93,
+        "capital": "Kabul",
+        "answers": ["Albania", "Afghanistan", "Bolivia", "Swaziland"]
+        }
+    */
+    let randomIndex = Math.floor(Math.random() * 253);
+    // get a random country from the countries array
+    let questionData = getAllCountriesList()[randomIndex];
+    let answers = [];
+    // Add right answer to answers array
+    answers.push(questionData.name);
+
+    let newRandomIndex;
+    for (let i = 0; i < 3; i++) {
+        newRandomIndex = Math.floor(Math.random() * 253);
+        // Generate a new random index if it ewuals the right answer index
+        newRandomIndex = newRandomIndex !== randomIndex ? newRandomIndex : Math.floor(Math.random() * 253);
+        // Add a random wrong answer to answers array
+        answers.push(getAllCountriesList()[newRandomIndex].name);
+    }
+
+    // Shuffle the answers array
+    shuffleArray(answers);
+    questionData.answers = answers;
+
+    return questionData;
+
 }
 /**
  * Get questions number based on the selected level 
@@ -81,4 +125,26 @@ function getTotalQuestions() {
             totalQuestion = 10;
     }
     return totalQuestion
+}
+/**
+ * Shuffle a given array
+ */
+function shuffleArray(array) {
+    let currentIndex = array.length,
+        randomIndex;
+
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
+
+    return array;
 }
