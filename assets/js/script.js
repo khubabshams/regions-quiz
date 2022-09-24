@@ -60,6 +60,13 @@ function loadQuestion() {
     // Render the question on page
     document.getElementById("continent").innerText = questionData.continent;
     document.getElementById("capital").innerText = questionData.capital;
+    let answerbuttons = document.getElementsByClassName("answer");
+    for(let i=0; i<4; i++){
+        answerbuttons[i].innerText = questionData.answers[i];
+    }
+    // todo: flag hint
+    // let flagCode = `<h2>Flag: <span id="flag"></span><img src="../images/flags/${questionData.code.toLowerCase()}.png"></h2>`;
+
 
 }
 // Helpers ---------------------------------
