@@ -1,6 +1,6 @@
 // All countries
 // length 252
-var countries = [{
+var allCountriesList = [{
         "name": "Afghanistan",
         "code": "AF",
         "capital": "Kabul",
@@ -1513,3 +1513,7 @@ var countries = [{
         "continent": "Africa"
     }
 ];
+
+export function getAllCountriesList() {
+    return allCountriesList;
+}
