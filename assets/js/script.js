@@ -123,7 +123,7 @@ function addAnswerEventListener() {
             setTimeout(function () {
 
                 // check answered question if it's not the final question
-                if (nextQuestionNumber !== getTotalQuestions()) {
+                if (nextQuestionNumber <= getTotalQuestions()) {
                     // move to the next question
                     nextQuestion(quizInfo.score, quizInfo.time, nextQuestionNumber);
                 } else {
