@@ -22,11 +22,10 @@ document.addEventListener("DOMContentLoaded", function () {
 function runQuiz() {
     let score = 0;
     let rightAnswer = "";
-    Promise(() => {
-        renderQuizPage();
-    }).then(function () {
-        addAnswerEventListener();
-    });
+
+    renderQuizPage();
+    console.log("00000", localStorage.getItem("score"));
+
 }
 
 /**
@@ -38,8 +37,7 @@ function renderQuizPage() {
     }).then(() => {
         renderQuizInfo();
         renderQuestionData();
-
-
+        addAnswerEventListener();
     });
 }
 /**
@@ -82,8 +80,18 @@ function renderQuestionData() {
  */
 function isCorrectAnswer(capitalName, CountryId) {
     const countryFound = getAllCountriesList().filter(country => (country.capital === capitalName && country.id === parseInt(CountryId)));
-    console.log("countryFound", countryFound);
     return countryFound.length === 0 ? false : true;
+}
+/**
+ * Called in case of right answer to increment score on score pad
+ */
+function incrementScore() {
+    // access score pad
+    const scoreContainer = document.getElementById("score-container");
+    // get old score
+    let score = parseInt(scoreContainer.innerText);
+    // increment score
+    scoreContainer.innerHTML = ++score;
 }
 /**
  * Add on click event listeners to answers buttons
@@ -95,10 +103,9 @@ function addAnswerEventListener() {
             const countryId = this.value;
             const capitalName = document.getElementById("capital").innerText;
             const correctAnswer = isCorrectAnswer(capitalName, countryId);
-            console.log("correct", correctAnswer);
             if (correctAnswer) {
                 setAnswerButtonsStyle(this, answerButtons);
-                score++;
+                incrementScore();
             }
         });
     }
