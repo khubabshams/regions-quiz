@@ -120,8 +120,8 @@ function addAnswerEventListener() {
             const quizInfo = getQuizInfo();
             let nextQuestionNumber = ++quizInfo.questionCounter;
             
+            // execute next action code after 1000 ms
             setTimeout(function () {
-
                 // check answered question if it's not the final question
                 if (nextQuestionNumber <= getTotalQuestions()) {
                     // move to the next question
