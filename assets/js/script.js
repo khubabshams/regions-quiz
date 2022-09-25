@@ -17,41 +17,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 /**
- * Run the quiz and iterate on each question
+ * Run and load the quiz page content, called on config form submission
  */
 function runQuiz() {
-    let score = 0;
-    let rightAnswer = "";
-
-    renderQuizPage();
-    console.log("00000", localStorage.getItem("score"));
-
-}
-
-/**
- * Load the quiz page content, called on config form submission
- */
-function renderQuizPage() {
     fetch("/quiz.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").innerHTML = response;
     }).then(() => {
+        // set score, timer, and question number
         renderQuizInfo();
+        // set question and answers
         renderQuestionData();
+        // set listeners for answers buttons
         addAnswerEventListener();
     });
 }
 /**
  * Set the questions and the timer counters
  */
-function renderQuizInfo() {
+function renderQuizInfo(score = 0, time = "0", questionCounter = 1) {
+    // set score
+    let scoreContainerElement = document.getElementById("score-container");
+    scoreContainerElement.innerText = `${score}`;
+
+    // set timer
+    let timerElement = document.getElementById("timer");
+    timerElement.innerText = `${time}`;
+
     // set question number/total questions
     let questionCounterElement = document.getElementById("question-counter");
-    let questionCounter = questionCounterElement.innerText.split("/");
-    if (questionCounter.length > 1) {
-        questionCounterElement.innerText = `${++parseInt(questionCounter[0])}/${questionCounter[1]}`;
-    } else {
-        questionCounterElement.innerText = `1/${getTotalQuestions()}`;
-    }
+    questionCounterElement.innerText = `${questionCounter}/${getTotalQuestions()}`;
 
     // todo: set timer
 }
@@ -59,13 +53,12 @@ function renderQuizInfo() {
  * Load the question and answers and update quiz page
  */
 function renderQuestionData() {
-    // Get question data
+    // get question data
     let questionData = getQuestionData();
-    // todo: Store the correct answer
-    // Load the question
+    // load the question
     document.getElementById("continent").innerText = questionData.continent;
     document.getElementById("capital").innerText = questionData.capital;
-    // Load the answers
+    // load the answers
     let answerbuttons = document.getElementsByClassName("answer");
     for (let i = 0; i < 4; i++) {
         answerbuttons[i].innerText = questionData.answers[i].name;
@@ -73,7 +66,6 @@ function renderQuestionData() {
     }
     // todo: flag hint
     // let flagCode = `<h2>Flag: <span id="flag"></span><img src="../images/flags/${questionData.code.toLowerCase()}.png"></h2>`;
-
 }
 /** 
  * Validate the selected answer based on the capital name and country id
@@ -94,6 +86,24 @@ function incrementScore() {
     scoreContainer.innerHTML = ++score;
 }
 /**
+ * Get score after each round, to ensure the result (time & score) is fair
+ */
+function getQuizInfo() {
+    // access score pad
+    const scoreContainer = document.getElementById("score-container");
+    // access time counter
+    const timer = document.getElementById("timer");
+    // access time counter
+    const questionCounterEl = document.getElementById("question-counter");
+
+    // return info object
+    return {
+        score: parseInt(scoreContainer.innerText),
+        time: timer.innerText,
+        questionCounter: parseInt(questionCounterEl.innerText.split("/")[0]),
+    };
+}
+/**
  * Add on click event listeners to answers buttons
  */
 function addAnswerEventListener() {
@@ -107,8 +117,41 @@ function addAnswerEventListener() {
                 setAnswerButtonsStyle(this, answerButtons);
                 incrementScore();
             }
+            const quizInfo = getQuizInfo();
+            let nextQuestionNumber = ++quizInfo.questionCounter;
+            
+            setTimeout(function () {
+
+                // check answered question if it's not the final question
+                if (nextQuestionNumber !== getTotalQuestions()) {
+                    // move to the next question
+                    nextQuestion(quizInfo.score, quizInfo.time, nextQuestionNumber);
+                } else {
+                    showScore(quizInfo.score, quizInfo.time);
+                }
+            }, 1000);
         });
     }
+}
+/**
+ * Iterate the quiz loop
+ */
+ function nextQuestion(score, time, questionCounter) {
+    console.log("next question ", score, time, questionCounter);
+    renderQuizInfo(score, time, questionCounter);
+    renderQuestionData();
+}
+/**
+ * Load the score page content, called when last question been answered
+ */
+ function showScore(score, time) {
+    fetch("/score.html").then(res => res.text()).then((response) => {
+        document.getElementById("quiz-main").innerHTML = response;
+    }).then(() => {
+        // set score, time, 
+        // set ranking, and trophy after compare score to db top-10
+        console.log(score, time);
+    });
 }
 /**
  * Update buttons style of the button of correct answer and wrong answers
@@ -126,9 +169,9 @@ function setAnswerButtonsStyle(correctAnswerButton, allAnswerButtons) {
  * Get a cookie from the document cookies
  */
 function getCookie(cookiename) {
-    // Get name followed by anything except a semicolon
+    // get name followed by anything except a semicolon
     let cookiestring = RegExp(cookiename + "=[^;]+").exec(document.cookie);
-    // Return everything after the equal sign, or an empty string if the cookie name not found
+    // return everything after the equal sign, or an empty string if the cookie name not found
     return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./, "") : "");
 }
 /**
@@ -151,10 +194,14 @@ function getQuestionData() {
         }
     */
     let randomIndex = Math.floor(Math.random() * 253);
+    // array to be used to find duplication in answer indexes
+    let randomIndexes = [];
+    // push answer index to answer indexes
+    randomIndexes.push(randomIndex)
     // get a random country from the countries array
     let questionData = getAllCountriesList()[randomIndex];
     let answers = [];
-    // Add right answer to answers array
+    // add right answer to answers array
     answers.push({
         name: questionData.name,
         id: questionData.id
@@ -163,9 +210,12 @@ function getQuestionData() {
     let newRandomIndex;
     for (let i = 0; i < 3; i++) {
         newRandomIndex = Math.floor(Math.random() * 253);
-        // Generate a new random index if it ewuals the right answer index
-        newRandomIndex = newRandomIndex !== randomIndex ? newRandomIndex : Math.floor(Math.random() * 253);
-        // Add a random wrong answer to answers array
+        // generate a new random index if it's already in previous answer indexes
+        newRandomIndex = !randomIndexes.includes(newRandomIndex) ? newRandomIndex : Math.floor(Math.random() * 253);
+
+        // push answer index to answer indexes
+        randomIndexes.push(newRandomIndex);
+        // add a random wrong answer to answers array
         const answerItem = getAllCountriesList()[newRandomIndex];
         answers.push({
             name: answerItem.name,
@@ -173,7 +223,7 @@ function getQuestionData() {
         });
     }
 
-    // Shuffle the answers array
+    // shuffle the answers array
     shuffleArray(answers);
     questionData.answers = answers;
 
@@ -204,15 +254,12 @@ function getTotalQuestions() {
 function shuffleArray(array) {
     let currentIndex = array.length,
         randomIndex;
-
-    // While there remain elements to shuffle.
+    // while there remain elements to shuffle.
     while (currentIndex != 0) {
-
-        // Pick a remaining element.
+        // pick a remaining element.
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex--;
-
-        // And swap it with the current element.
+        // and swap it with the current element.
         [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]
         ];
