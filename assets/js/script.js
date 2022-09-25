@@ -1,9 +1,7 @@
 import {
     getAllCountriesList
 } from './country_list.js';
-var score = 0;
-var time = 0;
-var correctAnswer = "";
+
 document.addEventListener("DOMContentLoaded", function () {
 
     let configForm = document.getElementById("config-form");
@@ -14,62 +12,109 @@ document.addEventListener("DOMContentLoaded", function () {
         let level = document.querySelector('input[name="level"]:checked').value;
 
         document.cookie = `nickName=${nickName};level=${level};`;
-        loadQuizPage();
+        runQuiz();
     });
+
 });
+/**
+ * Run the quiz and iterate on each question
+ */
+function runQuiz() {
+    let score = 0;
+    let rightAnswer = "";
+    Promise(() => {
+        renderQuizPage();
+    }).then(function () {
+        addAnswerEventListener();
+    });
+}
 
 /**
  * Load the quiz page content, called on config form submission
  */
-function loadQuizPage() {
+function renderQuizPage() {
     fetch("/quiz.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").innerHTML = response;
     }).then(() => {
-        initiateQuiz();
-        loadQuestion();
+        renderQuizInfo();
+        renderQuestionData();
+
+
     });
 }
 /**
- * Set the total questions and the timer counters
+ * Set the questions and the timer counters
  */
-function initiateQuiz() {
+function renderQuizInfo() {
     // set question number/total questions
     let questionCounterElement = document.getElementById("question-counter");
-
-    questionCounterElement.innerText = `1/${getTotalQuestions()}`;
+    let questionCounter = questionCounterElement.innerText.split("/");
+    if (questionCounter.length > 1) {
+        questionCounterElement.innerText = `${++parseInt(questionCounter[0])}/${questionCounter[1]}`;
+    } else {
+        questionCounterElement.innerText = `1/${getTotalQuestions()}`;
+    }
 
     // todo: set timer
 }
 /**
- * Set the current question number in question-counter
+ * Load the question and answers and update quiz page
  */
-function setQuestionCounter() {
-    let questionCounterElement = document.getElementById("question-counter");
-    let questionCounter = questionCounterElement.innerText.split("/");
-
-    questionCounterElement.innerText = `${++parseInt(questionCounter[0])}/${questionCounter[1]}`;
-}
-/**
- * Load the question and answers and render it in quiz-main
- */
-function loadQuestion() {
+function renderQuestionData() {
     // Get question data
     let questionData = getQuestionData();
-    // Store the correct answer
-    correctAnswer = questionData.name;
-    // Render the question on page
+    // todo: Store the correct answer
+    // Load the question
     document.getElementById("continent").innerText = questionData.continent;
     document.getElementById("capital").innerText = questionData.capital;
+    // Load the answers
     let answerbuttons = document.getElementsByClassName("answer");
-    for(let i=0; i<4; i++){
-        answerbuttons[i].innerText = questionData.answers[i];
+    for (let i = 0; i < 4; i++) {
+        answerbuttons[i].innerText = questionData.answers[i].name;
+        answerbuttons[i].value = questionData.answers[i].id;
     }
     // todo: flag hint
     // let flagCode = `<h2>Flag: <span id="flag"></span><img src="../images/flags/${questionData.code.toLowerCase()}.png"></h2>`;
 
-
 }
+/** 
+ * Validate the selected answer based on the capital name and country id
+ */
+function isCorrectAnswer(capitalName, CountryId) {
+    const countryFound = getAllCountriesList().filter(country => (country.capital === capitalName && country.id === parseInt(CountryId)));
+    console.log("countryFound", countryFound);
+    return countryFound.length === 0 ? false : true;
+}
+/**
+ * Add on click event listeners to answers buttons
+ */
+function addAnswerEventListener() {
+    let answerButtons = document.getElementsByClassName("answer");
+    for (let answerButton of answerButtons) {
+        answerButton.addEventListener("click", function () {
+            const countryId = this.value;
+            const capitalName = document.getElementById("capital").innerText;
+            const correctAnswer = isCorrectAnswer(capitalName, countryId);
+            console.log("correct", correctAnswer);
+            if (correctAnswer) {
+                setAnswerButtonsStyle(this, answerButtons);
+                score++;
+            }
+        });
+    }
+}
+/**
+ * Update buttons style of the button of correct answer and wrong answers
+ */
 // Helpers ---------------------------------
+function setAnswerButtonsStyle(correctAnswerButton, allAnswerButtons) {
+    // pop correct answer button from answer buttons
+    const wrongAnswerButtons = Array.from(allAnswerButtons).filter(answerButton => answerButton !== correctAnswerButton);
+    for (let wrongAnswerButton of wrongAnswerButtons) {
+        wrongAnswerButton.classList.add("wrong-answer");
+    }
+    correctAnswerButton.classList.add("correct-answer");
+}
 /**
  * Get a cookie from the document cookies
  */
@@ -84,12 +129,18 @@ function getCookie(cookiename) {
  */
 function getQuestionData() {
     /* 
-        return example: {
-        "name": "Afghanistan",
-        "code": "AF",
-        "phone": 93,
-        "capital": "Kabul",
-        "answers": ["Albania", "Afghanistan", "Bolivia", "Swaziland"]
+        return example: 
+        {
+            "name": "Afghanistan",
+            "code": "AF",
+            "phone": 93,
+            "capital": "Kabul",
+            "answers": [
+                {name: "Albania", id: 3},
+                {name:"Afghanistan" id: 1},
+                {name:"Bolivia" id: 27},
+                {name:"Swaziland" id: 217}
+            ]
         }
     */
     let randomIndex = Math.floor(Math.random() * 253);
@@ -97,7 +148,10 @@ function getQuestionData() {
     let questionData = getAllCountriesList()[randomIndex];
     let answers = [];
     // Add right answer to answers array
-    answers.push(questionData.name);
+    answers.push({
+        name: questionData.name,
+        id: questionData.id
+    });
 
     let newRandomIndex;
     for (let i = 0; i < 3; i++) {
@@ -105,7 +159,11 @@ function getQuestionData() {
         // Generate a new random index if it ewuals the right answer index
         newRandomIndex = newRandomIndex !== randomIndex ? newRandomIndex : Math.floor(Math.random() * 253);
         // Add a random wrong answer to answers array
-        answers.push(getAllCountriesList()[newRandomIndex].name);
+        const answerItem = getAllCountriesList()[newRandomIndex];
+        answers.push({
+            name: answerItem.name,
+            id: answerItem.id
+        });
     }
 
     // Shuffle the answers array
