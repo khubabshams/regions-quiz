@@ -42,15 +42,12 @@ function renderQuizInfo(score = 0, time = "0", questionCounter = 1) {
     let scoreContainerElement = document.getElementById("score-container");
     scoreContainerElement.innerText = `${score}`;
 
-    // set timer
-    let timerElement = document.getElementById("timer");
-    timerElement.innerText = `${time}`;
-
     // set question number/total questions
     let questionCounterElement = document.getElementById("question-counter");
     questionCounterElement.innerText = `${questionCounter}/${getTotalQuestions()}`;
 
     // todo: set timer
+    setTimer(time);
 }
 /**
  * Load the question and answers and update quiz page
@@ -70,7 +67,17 @@ function renderQuestionData() {
         answerbuttons[i].value = questionData.answers[i].id;
     }
 }
-
+/**
+ * Set timer
+ */
+function setTimer(time) {
+    // set timer
+    let timerElement = document.getElementById("timer");
+    setTimeout(function () {
+        code here
+    }, seconds * 1000)
+    timerElement.innerText = `${time}`;
+}
 /** 
  * Validate the selected answer based on the capital name and country id
  */
@@ -114,7 +121,6 @@ function addAnswerEventListener() {
     let answerButtons = document.getElementsByClassName("answer");
     for (let answerButton of answerButtons) {
         answerButton.addEventListener("click", function () {
-            console.log("------ clicked main!");
             const countryId = this.value;
             const capitalName = document.getElementById("capital").innerText;
             const correctAnswer = isCorrectAnswer(capitalName, countryId);
@@ -249,13 +255,16 @@ function getQuestionData() {
             ]
         }
     */
+    // get all countries list
+    let allCoutriesList = getAllCountriesList();
+    // random number of the questioned country index
     let randomIndex = Math.floor(Math.random() * 253);
     // array to be used to find duplication in answer indexes
     let randomIndexes = [];
     // push answer index to answer indexes
     randomIndexes.push(randomIndex)
     // get a random country from the countries array
-    let questionData = getAllCountriesList()[randomIndex];
+    let questionData = allCoutriesList[randomIndex];
     let answers = [];
     // add right answer to answers array
     answers.push({
@@ -272,7 +281,7 @@ function getQuestionData() {
         // push answer index to answer indexes
         randomIndexes.push(newRandomIndex);
         // add a random wrong answer to answers array
-        const answerItem = getAllCountriesList()[newRandomIndex];
+        const answerItem = allCoutriesList[newRandomIndex];
         answers.push({
             name: answerItem.name,
             id: answerItem.id
