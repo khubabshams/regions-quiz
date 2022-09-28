@@ -1,6 +1,9 @@
 import {
     getAllCountriesList
 } from './country_list.js';
+import {
+    renderMap
+} from './highcharts_map.js';
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -58,15 +61,16 @@ function renderQuestionData() {
     // load the question
     document.getElementById("continent").innerText = questionData.continent;
     document.getElementById("capital").innerText = questionData.capital;
+    // render map
+    renderMap(questionData);
     // load the answers
     let answerbuttons = document.getElementsByClassName("answer");
     for (let i = 0; i < 4; i++) {
         answerbuttons[i].innerText = questionData.answers[i].name;
         answerbuttons[i].value = questionData.answers[i].id;
     }
-    // todo: flag hint
-    // let flagCode = `<h2>Flag: <span id="flag"></span><img src="../images/flags/${questionData.code.toLowerCase()}.png"></h2>`;
 }
+
 /** 
  * Validate the selected answer based on the capital name and country id
  */
@@ -110,6 +114,7 @@ function addAnswerEventListener() {
     let answerButtons = document.getElementsByClassName("answer");
     for (let answerButton of answerButtons) {
         answerButton.addEventListener("click", function () {
+            console.log("------ clicked main!");
             const countryId = this.value;
             const capitalName = document.getElementById("capital").innerText;
             const correctAnswer = isCorrectAnswer(capitalName, countryId);
@@ -151,7 +156,7 @@ function showScore(score, time) {
         renderFinalMessage(score, time);
         // set sharing links
         renderShareLink(score);
-        // set ranking, and trophy after compare score to db top-10
+        // todo: set ranking, and trophy after compare score to db top-10
     });
 }
 /**
@@ -190,7 +195,7 @@ function renderFinalMessage(score, time) {
 /**
  * Update share links of facebook and twitter
  */
-function renderShareLink(score){
+function renderShareLink(score) {
     // get level to use in text
     const level = getCookie("level");
     // get anchor items
@@ -233,8 +238,9 @@ function getQuestionData() {
         {
             "name": "Afghanistan",
             "code": "AF",
-            "phone": 93,
             "capital": "Kabul",
+            "continent":"Asia",
+            "alpha_3":"AFG",
             "answers": [
                 {name: "Albania", id: 3},
                 {name:"Afghanistan", id: 1},
