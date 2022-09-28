@@ -5,19 +5,34 @@ import {
     renderMap
 } from './highcharts_map.js';
 
+// DOM loaded event listener
 document.addEventListener("DOMContentLoaded", function () {
 
+    // config form submission event listener
     let configForm = document.getElementById("config-form");
     configForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
+        // get user's inputs
         let nickName = document.getElementById("nick-name").value;
         let level = document.querySelector('input[name="level"]:checked').value;
 
+        // store inputs in cookies
         document.cookie = `nickName=${nickName};level=${level};`;
+
+        // start quiz
         runQuiz();
     });
 
+});
+/**
+ * Before unload event listener; asks user for confirmation 
+ */
+window.addEventListener('beforeunload', (event) => {
+    event.preventDefault();
+
+    event.returnValue = '';
+    return 'Are you sure you leave this page?';
 });
 /**
  * Run and load the quiz page content, called on config form submission
