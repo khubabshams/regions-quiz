@@ -86,7 +86,7 @@ function incrementScore() {
     scoreContainer.innerHTML = ++score;
 }
 /**
- * Get score after each round, to ensure the result (time & score) is fair
+ * Get quiez progress data (score, time, and question counter)
  */
 function getQuizInfo() {
     // access score pad
@@ -119,8 +119,8 @@ function addAnswerEventListener() {
             }
             const quizInfo = getQuizInfo();
             let nextQuestionNumber = ++quizInfo.questionCounter;
-            
-            // execute next action code after 1000 ms
+
+            // execute next action code after 500 ms
             setTimeout(function () {
                 // check answered question if it's not the final question
                 if (nextQuestionNumber <= getTotalQuestions()) {
@@ -129,34 +129,83 @@ function addAnswerEventListener() {
                 } else {
                     showScore(quizInfo.score, quizInfo.time);
                 }
-            }, 1000);
+            }, 500);
         });
     }
 }
 /**
  * Iterate the quiz loop
  */
- function nextQuestion(score, time, questionCounter) {
-    console.log("next question ", score, time, questionCounter);
+function nextQuestion(score, time, questionCounter) {
     renderQuizInfo(score, time, questionCounter);
     renderQuestionData();
 }
 /**
  * Load the score page content, called when last question been answered
  */
- function showScore(score, time) {
+function showScore(score, time) {
     fetch("/score.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").innerHTML = response;
     }).then(() => {
-        // set score, time, 
+        // set score, time
+        renderFinalMessage(score, time);
+        // set sharing links
+        renderShareLink(score);
         // set ranking, and trophy after compare score to db top-10
-        console.log(score, time);
     });
+}
+/**
+ * Set score message based on the achieved score over the total score
+ */
+function renderFinalMessage(score, time) {
+    // total score == total questions number
+    // total score / acheived score = score rate
+    const scoreRate = getTotalQuestions() / score;
+    let scoreMessage;
+
+    // check the value of the total score over the achieved score 
+    switch (true) {
+        case scoreRate >= 0.9:
+            scoreMessage = "Congrats on your great score!";
+            break;
+        case scoreRate >= 0.7:
+            scoreMessage = "You’ve passed with flying colors!";
+            break;
+        case scoreRate >= 0.5:
+            scoreMessage = "Kudos to you for passing this quiz!";
+            break;
+        case scoreRate < 0.5:
+            scoreMessage = '“There is no failure except in no longer trying.” – Chris Bradford';
+            break;
+        default:
+            scoreMessage = "";
+    }
+    // add final score
+    scoreMessage = `${scoreMessage}\nFinal Score is ${score}`;
+    // set message
+    document.getElementById("score-message").innerText = scoreMessage;
+    // set time
+    document.getElementById("finishing-time").innerText = `Finishing time is ${time}`;
+}
+/**
+ * Update share links of facebook and twitter
+ */
+function renderShareLink(score){
+    // get level to use in text
+    const level = getCookie("level");
+    // get anchor items
+    const fbAnchor = document.getElementById("share-facebook");
+    const twAnchor = document.getElementById("share-twitter");
+    // set links text
+    const fbLink = `https://www.facebook.com/sharer/sharer.php?u=u=I%20have%20achieved%20of%${score}%20in%20RegionsQuiz%20${level}%20level%20https%3A%2F%2Fkshamse.github.io%2Fregions-quiz`;
+    const twLink = `https://twitter.com/intent/tweet?text=I%20have%20achieved%20a%20score%20of%20${score}%20in%20RegionsQuiz%20${level}%20level%20https%3A%2F%2Fkshamse.github.io%2Fregions-quiz&original_referer=https%3A%2F%2Fkshamse.github.io%2Fregions-quiz&related=region-quiz`;
+    // set the anchor href
+    fbAnchor.href = fbLink;
+    twAnchor.href = twLink;
 }
 /**
  * Update buttons style of the button of correct answer and wrong answers
  */
-// Helpers ---------------------------------
 function setAnswerButtonsStyle(correctAnswerButton, allAnswerButtons) {
     // pop correct answer button from answer buttons
     const wrongAnswerButtons = Array.from(allAnswerButtons).filter(answerButton => answerButton !== correctAnswerButton);
@@ -165,6 +214,7 @@ function setAnswerButtonsStyle(correctAnswerButton, allAnswerButtons) {
     }
     correctAnswerButton.classList.add("correct-answer");
 }
+// Helpers ---------------------------------
 /**
  * Get a cookie from the document cookies
  */
@@ -187,9 +237,9 @@ function getQuestionData() {
             "capital": "Kabul",
             "answers": [
                 {name: "Albania", id: 3},
-                {name:"Afghanistan" id: 1},
-                {name:"Bolivia" id: 27},
-                {name:"Swaziland" id: 217}
+                {name:"Afghanistan", id: 1},
+                {name:"Bolivia", id: 27},
+                {name:"Swaziland", id: 217}
             ]
         }
     */
