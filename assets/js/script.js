@@ -32,12 +32,14 @@ function runQuiz() {
         renderQuestionData();
         // set listeners for answers buttons
         addAnswerEventListener();
+        // set timer
+        setTimer();
     });
 }
 /**
  * Set the questions and the timer counters
  */
-function renderQuizInfo(score = 0, time = "0", questionCounter = 1) {
+function renderQuizInfo(score = 0, questionCounter = 1) {
     // set score
     let scoreContainerElement = document.getElementById("score-container");
     scoreContainerElement.innerText = `${score}`;
@@ -45,9 +47,6 @@ function renderQuizInfo(score = 0, time = "0", questionCounter = 1) {
     // set question number/total questions
     let questionCounterElement = document.getElementById("question-counter");
     questionCounterElement.innerText = `${questionCounter}/${getTotalQuestions()}`;
-
-    // todo: set timer
-    setTimer(time);
 }
 /**
  * Load the question and answers and update quiz page
@@ -66,17 +65,6 @@ function renderQuestionData() {
         answerbuttons[i].innerText = questionData.answers[i].name;
         answerbuttons[i].value = questionData.answers[i].id;
     }
-}
-/**
- * Set timer
- */
-function setTimer(time) {
-    // set timer
-    let timerElement = document.getElementById("timer");
-    setTimeout(function () {
-        code here
-    }, seconds * 1000)
-    timerElement.innerText = `${time}`;
 }
 /** 
  * Validate the selected answer based on the capital name and country id
@@ -97,7 +85,7 @@ function incrementScore() {
     scoreContainer.innerHTML = ++score;
 }
 /**
- * Get quiez progress data (score, time, and question counter)
+ * Get quiz progress data (score, time, and question counter)
  */
 function getQuizInfo() {
     // access score pad
@@ -136,7 +124,7 @@ function addAnswerEventListener() {
                 // check answered question if it's not the final question
                 if (nextQuestionNumber <= getTotalQuestions()) {
                     // move to the next question
-                    nextQuestion(quizInfo.score, quizInfo.time, nextQuestionNumber);
+                    nextQuestion(quizInfo.score, nextQuestionNumber);
                 } else {
                     showScore(quizInfo.score, quizInfo.time);
                 }
@@ -145,10 +133,34 @@ function addAnswerEventListener() {
     }
 }
 /**
+ * Set timer in the timer pad
+ */
+function setTimer(){
+    // access time counter
+    const timer = document.getElementById("timer");
+    
+    // time vars
+    let timePast;
+    let minutes;
+    let seconds;
+
+    // set interval of 1000 ms
+    setInterval(function () {
+        timePast = timer.innerText.split(":");
+
+        seconds = parseInt(timePast[1]);
+        minutes =  parseInt(timePast[0]) + Math.floor(++seconds / 60);
+        
+        seconds = seconds <= 59? seconds: 0;
+
+        timer.innerText = `${getTimeUnitFormatted(minutes)}:${getTimeUnitFormatted(seconds)}`;
+    }, 1000);
+}
+/**
  * Iterate the quiz loop
  */
-function nextQuestion(score, time, questionCounter) {
-    renderQuizInfo(score, time, questionCounter);
+function nextQuestion(score, questionCounter) {
+    renderQuizInfo(score, questionCounter);
     renderQuestionData();
 }
 /**
@@ -234,6 +246,12 @@ function getCookie(cookiename) {
     let cookiestring = RegExp(cookiename + "=[^;]+").exec(document.cookie);
     // return everything after the equal sign, or an empty string if the cookie name not found
     return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./, "") : "");
+}
+/**
+ * Get time unit in a format of two digits: 00, 01, or 10
+ */
+function getTimeUnitFormatted(timeUnit){
+    return timeUnit >= 10? timeUnit: `0${timeUnit}`;
 }
 /**
  * Get a random question data from countries list and wrong answers
