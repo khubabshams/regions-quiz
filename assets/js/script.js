@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let level = document.querySelector('input[name="level"]:checked').value;
 
         // store inputs in cookies
-        document.cookie = `nickName=${nickName};level=${level};`;
+        document.cookie = `nickName=${nickName};level=${level};path=/`;
 
         // start quiz
         runQuiz();
