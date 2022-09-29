@@ -56,7 +56,7 @@
                 },
 
                 title: {
-                    text: 'Airport density per country',
+                    text: 'RegionQuiz',
                     floating: true,
                     align: 'left',
                     style: {
@@ -65,8 +65,7 @@
                 },
 
                 subtitle: {
-                    text: 'Source: <a href="http://www.citypopulation.de/en/world/bymap/airports/">citypopulation.de</a><br>' +
-                        'Click and drag to rotate globe<br>',
+                    text: '<br>Click and drag to rotate globe<br>',
                     floating: true,
                     y: 34,
                     align: 'left'
