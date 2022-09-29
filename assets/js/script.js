@@ -77,16 +77,19 @@ function renderQuestionData() {
     // load the answers
     let answerbuttons = document.getElementsByClassName("answer");
     for (let i = 0; i < 4; i++) {
+        answerbuttons[i].classList.remove("clicked-answer");
+        answerbuttons[i].classList.remove("wrong-answer");
+        answerbuttons[i].classList.remove("correct-answer");
         answerbuttons[i].innerText = questionData.answers[i].name;
         answerbuttons[i].value = questionData.answers[i].id;
     }
 }
 /** 
- * Validate the selected answer based on the capital name and country id
+ * Validate the selected answer based on the capital name and continent
  */
-function isCorrectAnswer(capitalName, CountryId) {
-    const countryFound = getAllCountriesList().filter(country => (country.capital === capitalName && country.id === parseInt(CountryId)));
-    return countryFound.length === 0 ? false : true;
+function getCorrectAnswer(capitalName, continentName) {
+    const countryFound = getAllCountriesList().filter(country => (country.capital === capitalName && country.continent === continentName));
+    return countryFound[0];
 }
 /**
  * Called in case of right answer to increment score on score pad
@@ -124,14 +127,25 @@ function addAnswerEventListener() {
     let answerButtons = document.getElementsByClassName("answer");
     for (let answerButton of answerButtons) {
         answerButton.addEventListener("click", function () {
+            // selected answer value
             const countryId = this.value;
+            // continent and capital to get correct answer
+            const continentName = document.getElementById("continent").innerText;
             const capitalName = document.getElementById("capital").innerText;
-            const correctAnswer = isCorrectAnswer(capitalName, countryId);
-            if (correctAnswer) {
-                setAnswerButtonsStyle(this, answerButtons);
+            
+            // getting correct answer
+            const correctAnswer = getCorrectAnswer(capitalName, continentName);
+
+            // increment score if selected == correct aswer
+            if (correctAnswer.id.toString() === countryId) {
                 incrementScore();
             }
+            // set buttons style
+            setAnswerButtonsStyle(correctAnswer.id.toString(), this, answerButtons);
+            
+            // get quiz info so far
             const quizInfo = getQuizInfo();
+            // next question number
             let nextQuestionNumber = ++quizInfo.questionCounter;
 
             // execute next action code after 500 ms
@@ -150,10 +164,10 @@ function addAnswerEventListener() {
 /**
  * Set timer in the timer pad
  */
-function setTimer(){
+function setTimer() {
     // access time counter
     const timer = document.getElementById("timer");
-    
+
     // time vars
     let timePast;
     let minutes;
@@ -164,9 +178,9 @@ function setTimer(){
         timePast = timer.innerText.split(":");
 
         seconds = parseInt(timePast[1]);
-        minutes =  parseInt(timePast[0]) + Math.floor(++seconds / 60);
-        
-        seconds = seconds <= 59? seconds: 0;
+        minutes = parseInt(timePast[0]) + Math.floor(++seconds / 60);
+
+        seconds = seconds <= 59 ? seconds : 0;
 
         timer.innerText = `${getTimeUnitFormatted(minutes)}:${getTimeUnitFormatted(seconds)}`;
     }, 1000);
@@ -197,8 +211,8 @@ function showScore(score, time) {
  */
 function renderFinalMessage(score, time) {
     // total score == total questions number
-    // total score / acheived score = score rate
-    const scoreRate = getTotalQuestions() / score;
+    //  acheived score / total score = score rate
+    const scoreRate = score / getTotalQuestions();
     let scoreMessage;
 
     // check the value of the total score over the achieved score 
@@ -244,13 +258,18 @@ function renderShareLink(score) {
 /**
  * Update buttons style of the button of correct answer and wrong answers
  */
-function setAnswerButtonsStyle(correctAnswerButton, allAnswerButtons) {
-    // pop correct answer button from answer buttons
-    const wrongAnswerButtons = Array.from(allAnswerButtons).filter(answerButton => answerButton !== correctAnswerButton);
-    for (let wrongAnswerButton of wrongAnswerButtons) {
-        wrongAnswerButton.classList.add("wrong-answer");
+function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons) {    
+    // look for the answer button of the right answer 
+    for (let answerButton of allAnswerButtons) {
+        if(answerButton === clickedAnswerButton){
+            answerButton.classList.add("clicked-answer");
+        }
+        if (answerButton.value === countryId) {
+            answerButton.classList.add("correct-answer");
+        } else {
+            answerButton.classList.add("wrong-answer");
+        }
     }
-    correctAnswerButton.classList.add("correct-answer");
 }
 // Helpers ---------------------------------
 /**
@@ -265,8 +284,8 @@ function getCookie(cookiename) {
 /**
  * Get time unit in a format of two digits: 00, 01, or 10
  */
-function getTimeUnitFormatted(timeUnit){
-    return timeUnit >= 10? timeUnit: `0${timeUnit}`;
+function getTimeUnitFormatted(timeUnit) {
+    return timeUnit >= 10 ? timeUnit : `0${timeUnit}`;
 }
 /**
  * Get a random question data from countries list and wrong answers

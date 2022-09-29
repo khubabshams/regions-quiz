@@ -6,6 +6,7 @@
  export function renderMap(regionData) {
     const data = [{
         'code': regionData.code,
+        'value': 0
     }];
 
     const getGraticule = () => {
@@ -56,7 +57,7 @@
                 },
 
                 title: {
-                    text: 'RegionQuiz',
+                    text: 'RegionsQuiz',
                     floating: true,
                     align: 'left',
                     style: {
@@ -93,8 +94,8 @@
 
                 colorAxis: {
                     tickPixelInterval: 100,
-                    minColor: '#BFCFAD',
-                    maxColor: '#31784B',
+                    minColor: '#03AEB8',
+                    maxColor: '#FFFF',
                     max: 1000
                 },
 
