@@ -38,7 +38,7 @@ window.addEventListener('beforeunload', (event) => {
  * Run and load the quiz page content, called on config form submission
  */
 function runQuiz() {
-    fetch("/quiz.html").then(res => res.text()).then((response) => {
+    fetch("../../quiz.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").innerHTML = response;
     }).then(() => {
         // set score, timer, and question number
