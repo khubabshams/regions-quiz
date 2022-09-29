@@ -22,9 +22,11 @@ html {
 
 /* Section */
 section {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-color: #03AEB8;
+    margin-bottom: 30px;
+    padding: 5px;
 }
 
 /* Anchors */
@@ -39,13 +41,12 @@ button {
     color: #FFFF;
     border: 2px solid #FFFF;
     border-radius: 10px;
-    width: 100px;
-    height: 30px;
+    height: 50px;
+    width: 35%;
 }
 
 button:hover {
     border: 2px solid #FFB402;
-    /* background-color: #FFB402; */
 }
 
 /* Inputs */
@@ -59,43 +60,108 @@ input {
 input:hover {
     border: 2px solid #FFB402;
     accent-color: #FFB402;
-    /* background-color: #FFB402; */
 }
 
 /* Body styling*/
 body {
-    color: #FFFF;
     margin: 20px;
 }
 
 /* Header */
 header {
     font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    height: 10vh;
 }
 
 /* Logo */
 #logo {
     font-size: 125%;
+    width: 10%;
     color: #03AEB8;
     text-align: center;
 }
 
 /* Menu */
 #menu {
-    color: #FC4662;
-    letter-spacing: px;
-    text-align: center;
+    float: left;
+    font-size: 125%;
+    background: #FFFF;
+    color: #03AEB8;
+    width: 300px;
+    -webkit-clip-path: circle(24px at 30px 24px);
+    clip-path: circle(24px at 32px 24px);
+    -webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
+    transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
 }
 
-#menu li {
-    display: inline;
-    list-style-type: none;
-    margin-right: 20px;
+#menu:hover {
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    -webkit-transition-duration: 0.75s;
+    transition-duration: 0.75s;
+    -webkit-clip-path: circle(390px at 225px 24px);
+    clip-path: circle(390px at 150px 24px);
+}
+
+#menu a {
+    display: block;
+    line-height: 50px;
+    padding: 0 20px;
+    color: inherit;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #menu a:hover {
-    color: #FFB402;
+    background: #03AEB8;
+    color: #FFFF;
 }
+
+
+/* Same line header and nav menu */
+#logo,
+#menu {
+    line-height: 20px;
+}
+
+/* Elipsis Menu Icon */
+.navicon {
+    padding: 23px 20px;
+    cursor: pointer;
+    -webkit-transform-origin: 32px 24px;
+    -ms-transform-origin: 32px 24px;
+    transform-origin: 32px 24px;
+}
+
+.navicon div {
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #03AEB8;
+}
+
+.navicon div:before,
+.navicon div:after {
+    display: block;
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #03AEB8;
+    position: absolute;
+}
+
+.navicon div:before {
+    top: -7px;
+}
+
+.navicon div:after {
+    top: 7px;
+}
+
 
 /* Section Header */
 .section-header {
@@ -117,12 +183,6 @@ fieldset {
 
 fieldset label {
     display: block;
-}
-
-legend {
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 fieldset ul {
@@ -147,20 +207,11 @@ fieldset input:checked+label {
     border-radius: 10px;
 }
 
-/* input[type=radio] {
-    position: fixed;
-opacity: 0;
-pointer-events:painted;
-} */
-
-/* input[type='radio']{   
-    display: table-cell;
-    vertical-align: middle
- } */
 
 /* Main Section */
 .main-section {
-    margin-top: 5%;
+    overflow: hidden;
+    padding-top: 5%;
     width: 100%;
     text-align: center;
 }
@@ -172,10 +223,80 @@ pointer-events:painted;
 }
 
 /* Quick Tips */
+#quick-tips {
+    text-align: center;
+}
+
 #quick-tips ul {
     text-align: center;
 }
 
 #quick-tips li {
     text-align: justify;
+}
+
+/* Quiz Page */
+
+#highcharts-figure {
+    height: 30%;
+    width: 50%;
+}
+
+#answer-container {
+    display: flex;
+}
+
+#answers-container button {
+    width: 40%;
+    height: auto;
+    margin-bottom: 2px;
+}
+
+#continent::before {
+    content: "Continent ";
+    color: #FFB402;
+}
+
+#capital::before {
+    content: "Capital ";
+    color: #FFB402;
+}
+
+.clicked-answer {
+    background-color: red;
+}
+
+.wrong-answer {
+    background-color: grey;
+}
+
+.correct-answer {
+    background-color: green;
+}
+
+/* Social Media Links */
+.fa-square-twitter:hover,
+.fa-twitter:hover {
+    color: cyan;
+}
+
+.fa-square-facebook:hover,
+.fa-facebook-f:hover {
+    color: blue;
+}
+
+.fa-youtube:hover {
+    color: red;
+}
+
+/* Footer */
+footer {
+    color: #03AEB8;
+    text-align: center;
+}
+
+footer li {
+    display: inline;
+    margin-right: 20px;
+    list-style-type: none;
 }
