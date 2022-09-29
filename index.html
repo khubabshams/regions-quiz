@@ -39,7 +39,7 @@
         <nav id="menu">
             <ul>
                 <li>
-                    <a href="index.html" class="active">
+                    <a href="index.html">
                         Home
                     </a>
                 </li>
@@ -57,9 +57,9 @@
         </nav>
     </header>
 
-    <section id="quiz-main">
+    <section id="quiz-main" class="main-section">
         <!-- Section Header -->
-        <h2>Test Your Regions Knowledge</h2>
+        <h2 class="section-header">Test Your Regions Knowledge</h2>
 
         <form id="config-form" method="GET">
             <!-- Nick Name -->
@@ -69,14 +69,21 @@
             <!-- Level Selection -->
             <fieldset>
                 <legend>Level</legend>
-                <input type="radio" name="level" id="champion" value="champion" checked="checked">
-                <label for="champion">Champion</label>
+                <ul>
+                    <li>
+                        <input type="radio" name="level" id="champion" value="champion" checked="checked">
+                        <label for="champion">Champion</label>
+                    </li>
 
-                <input type="radio" name="level" id="master" value="master">
-                <label for="master">Master</label>
-
-                <input type="radio" name="level" id="legendary" value="legendary">
-                <label for="legendary">Legendary</label>
+                    <li>
+                        <input type="radio" name="level" id="master" value="master">
+                        <label for="master">Master</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="level" id="legendary" value="legendary">
+                        <label for="legendary">Legendary</label>
+                    </li>
+                </ul>
             </fieldset>
 
             <!-- Submit Button -->
@@ -84,9 +91,9 @@
         </form>
     </section>
 
-    <section id="quick-tips">
+    <section id="quick-tips" class="main-section">
         <!-- Section Header -->
-        <h2>Quick Tips</h2>
+        <h2 class="section-header">Quick Tips</h2>
         <ul>
             <li>Rotate the 3d globe to find the region position, and a hint for the correct answer.</li>
             <li>Every correct answer will get you 1 point, wrong answers deducts nothing.</li>
@@ -94,9 +101,9 @@
         </ul>
     </section>
 
-    <section id="scoreboards">
+    <section id="scoreboards" class="main-section">
         <!-- Section Header -->
-        <h2>Score Boards</h2>
+        <h2 class="section-header">Score Boards</h2>
 
         <!-- Legends Board -->
         <h3>Legends</h3>

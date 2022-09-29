@@ -1,0 +1,181 @@
+/* Google font import */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Mulish:wght@300&family=Quattrocento+Sans&family=Roboto&display=swap');
+
+/*
+Colors Use:
+#03AEB8 Background - blu
+#FFB402 Headers - yel
+#FC4662 Buttons - red
+#FFFF Text
+*/
+
+/* General styling */
+* {
+    box-sizing: border-box;
+    font-size: 110%;
+}
+
+html {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFFF;
+}
+
+/* Section */
+section {
+    height: 100vh;
+    width: 100vw;
+    background-color: #03AEB8;
+}
+
+/* Anchors */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Buttons */
+button {
+    background-color: #FC4662;
+    color: #FFFF;
+    border: 2px solid #FFFF;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+button:hover {
+    border: 2px solid #FFB402;
+    /* background-color: #FFB402; */
+}
+
+/* Inputs */
+input {
+    border: 2px solid #FFFF;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+input:hover {
+    border: 2px solid #FFB402;
+    accent-color: #FFB402;
+    /* background-color: #FFB402; */
+}
+
+/* Body styling*/
+body {
+    color: #FFFF;
+    margin: 20px;
+}
+
+/* Header */
+header {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Logo */
+#logo {
+    font-size: 125%;
+    color: #03AEB8;
+    text-align: center;
+}
+
+/* Menu */
+#menu {
+    color: #FC4662;
+    letter-spacing: px;
+    text-align: center;
+}
+
+#menu li {
+    display: inline;
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+#menu a:hover {
+    color: #FFB402;
+}
+
+/* Section Header */
+.section-header {
+    color: #FFB402;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+/* H2 , H3 */
+h2,
+h3 {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Fieldset */
+fieldset {
+    border: 0;
+}
+
+fieldset label {
+    display: block;
+}
+
+legend {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+fieldset ul {
+    list-style: none;
+}
+
+fieldset li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+fieldset input {
+    visibility: hidden;
+}
+
+fieldset label {
+    cursor: pointer;
+}
+
+fieldset input:checked+label {
+    background: #FFB402;
+    border-radius: 10px;
+}
+
+/* input[type=radio] {
+    position: fixed;
+opacity: 0;
+pointer-events:painted;
+} */
+
+/* input[type='radio']{   
+    display: table-cell;
+    vertical-align: middle
+ } */
+
+/* Main Section */
+.main-section {
+    margin-top: 5%;
+    width: 100%;
+    text-align: center;
+}
+
+/* Quiz Main */
+#nick-name {
+    width: 30%;
+    height: 40px;
+}
+
+/* Quick Tips */
+#quick-tips ul {
+    text-align: center;
+}
+
+#quick-tips li {
+    text-align: justify;
+}
