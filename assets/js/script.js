@@ -79,7 +79,7 @@ function renderQuestionData() {
     // load the answers
     let answerbuttons = document.getElementsByClassName("answer");
     for (let i = 0; i < 4; i++) {
-        answerbuttons[i].classList.remove("clicked-answer");
+        answerbuttons[i].classList.remove("dummy-answer");
         answerbuttons[i].classList.remove("wrong-answer");
         answerbuttons[i].classList.remove("correct-answer");
         answerbuttons[i].innerText = questionData.answers[i].name;
@@ -134,7 +134,7 @@ function addAnswerEventListener() {
             // continent and capital to get correct answer
             const continentName = document.getElementById("continent").innerText;
             const capitalName = document.getElementById("capital").innerText;
-            
+
             // getting correct answer
             const correctAnswer = getCorrectAnswer(capitalName, continentName);
 
@@ -144,7 +144,7 @@ function addAnswerEventListener() {
             }
             // set buttons style
             setAnswerButtonsStyle(correctAnswer.id.toString(), this, answerButtons);
-            
+
             // get quiz info so far
             const quizInfo = getQuizInfo();
             // next question number
@@ -260,16 +260,18 @@ function renderShareLink(score) {
 /**
  * Update buttons style of the button of correct answer and wrong answers
  */
-function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons) {    
+function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons) {
     // look for the answer button of the right answer 
     for (let answerButton of allAnswerButtons) {
-        if(answerButton === clickedAnswerButton){
-            answerButton.classList.add("clicked-answer");
-        }
+        // button is correct answer 
         if (answerButton.value === countryId) {
             answerButton.classList.add("correct-answer");
         } else {
-            answerButton.classList.add("wrong-answer");
+            if (answerButton !== clickedAnswerButton) {
+                answerButton.classList.add("dummy-answer");
+            } else {
+                answerButton.classList.add("wrong-answer");
+            }
         }
     }
 }

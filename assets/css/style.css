@@ -312,12 +312,12 @@ fieldset input:checked+label {
     color: #FFB402;
 }
 
-.clicked-answer {
-    background-color: rgb(199, 6, 6);
+.dummy-answer {
+    background-color: rgb(124, 120, 120);
 }
 
 .wrong-answer {
-    background-color: rgb(124, 120, 120);
+    background-color: rgb(199, 6, 6);
 }
 
 .correct-answer {

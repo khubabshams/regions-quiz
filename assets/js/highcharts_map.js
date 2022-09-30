@@ -127,8 +127,8 @@
                     name: 'Hint',
                     states: {
                         hover: {
-                            color: '#a4edba',
-                            borderColor: '#333333'
+                            color: '#FFB402',
+                            borderColor: '#a4edba'
                         }
                     },
                     dataLabels: {
