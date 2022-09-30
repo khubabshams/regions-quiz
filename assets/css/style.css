@@ -217,13 +217,14 @@ fieldset input:checked+label {
     overflow: hidden;
     padding-top: 5%;
     width: 100%;
-    text-align: center;
 }
 
 /* Quiz Main */
 #quiz-main {
     margin-bottom: 10px;
+    text-align: center;
 }
+
 #nick-name {
     width: 30%;
     height: 40px;
@@ -234,13 +235,11 @@ fieldset input:checked+label {
     text-align: center;
 }
 
-#quick-tips ul {
-    text-align: center;
+#quick-tips p {
+    /* text-align: justify; */
+    font-size: 120%;
 }
 
-#quick-tips li {
-    text-align: justify;
-}
 
 /* Quiz Page */
 #highcharts-figure {
@@ -250,6 +249,7 @@ fieldset input:checked+label {
 
 #answer-container {
     display: flex;
+    margin-bottom: 30px;
 }
 
 #answers-container button {

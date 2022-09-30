@@ -41,6 +41,8 @@ function runQuiz() {
     fetch("./quiz.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").innerHTML = response;
     }).then(() => {
+        // scroll into question area
+        document.getElementById("question-container").scrollIntoView();
         // set score, timer, and question number
         renderQuizInfo();
         // set question and answers
