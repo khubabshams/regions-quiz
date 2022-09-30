@@ -227,7 +227,13 @@ fieldset input:checked+label {
 
 #nick-name {
     width: 30%;
-    height: 40px;
+    height: 50px;
+    color: #FFB402;
+    font-weight: bold;
+}
+
+#nick-name:focus {
+    border: 3px solid #FFB402;
 }
 
 /* Quick Tips */
@@ -242,6 +248,44 @@ fieldset input:checked+label {
 
 
 /* Quiz Page */
+#question-counter {
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+#score-container {
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#timer {
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+#question-counter,
+#score-container,
+#timer {
+    line-height: 20px;
+}
+
+#question-counter::before {
+    content: "Question: ";
+    color: #FFB402;
+}
+
+#timer::before {
+    content: "Time: ";
+    color: #FFB402;
+}
+
+#score-container::before {
+    content: "Score: ";
+    color: #FFB402;
+}
+
 #highcharts-figure {
     height: 30%;
     width: 50%;
@@ -269,31 +313,17 @@ fieldset input:checked+label {
 }
 
 .clicked-answer {
-    background-color: red;
+    background-color: rgb(199, 6, 6);
 }
 
 .wrong-answer {
-    background-color: grey;
+    background-color: rgb(124, 120, 120);
 }
 
 .correct-answer {
-    background-color: green;
+    background-color: rgb(30, 230, 11);
 }
 
-/* Social Media Links */
-.fa-square-twitter:hover,
-.fa-twitter:hover {
-    color: cyan;
-}
-
-.fa-square-facebook:hover,
-.fa-facebook-f:hover {
-    color: blue;
-}
-
-.fa-youtube:hover {
-    color: red;
-}
 
 /* Footer */
 footer {
@@ -305,4 +335,18 @@ footer li {
     display: inline;
     margin-right: 20px;
     list-style-type: none;
+}
+
+.fa-square-twitter:hover,
+.fa-twitter:hover {
+    color: rgb(37, 163, 247);
+}
+
+.fa-square-facebook:hover,
+.fa-facebook-f:hover {
+    color: rgb(8, 8, 153);
+}
+
+.fa-youtube:hover {
+    color: rgb(190, 10, 10);
 }
