@@ -233,12 +233,9 @@ fieldset input:checked+label {
 }
 
 /* Quick Tips */
-#quick-tips {
-    text-align: center;
-}
 
 #quick-tips p {
-    /* text-align: justify; */
+    margin: 40px 40px;
     font-size: 120%;
 }
 
