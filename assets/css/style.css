@@ -233,9 +233,8 @@ fieldset input:checked+label {
 }
 
 /* Quick Tips */
-
 #quick-tips p {
-    margin: 40px 40px;
+    margin: 40px 100px;
     font-size: 120%;
 }
 
