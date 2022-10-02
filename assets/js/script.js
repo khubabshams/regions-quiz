@@ -79,11 +79,11 @@ function renderQuestionData() {
     renderMap(questionData);
     // load the answers
     let answerbuttons = document.getElementsByClassName("answer");
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < answerbuttons.length; i++) {
         answerbuttons[i].classList.remove("dummy-answer");
         answerbuttons[i].classList.remove("wrong-answer");
         answerbuttons[i].classList.remove("correct-answer");
-        answerbuttons[i].innerText = questionData.answers[i].name;
+        answerbuttons[i].innerText = `${i+1}. ${questionData.answers[i].name}`;
         answerbuttons[i].value = questionData.answers[i].id;
     }
 }
