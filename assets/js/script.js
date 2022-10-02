@@ -17,8 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let nickName = document.getElementById("nick-name").value;
         let level = document.querySelector('input[name="level"]:checked').value;
 
-        // store inputs in cookies
-        document.cookie = `nickName=${nickName};level=${level};`;
+        // store inputs in localStorage
+        localStorage.setItem('nickName', `${nickName}`);
+        localStorage.setItem('level', `${level}`);
 
         // start quiz
         runQuiz();
@@ -246,7 +247,7 @@ function renderFinalMessage(score, time) {
  */
 function renderShareLink(score) {
     // get level to use in text
-    const level = getCookie("level");
+    const level = localStorage.getItem('level');
     // get anchor items
     const fbAnchor = document.getElementById("share-facebook");
     const twAnchor = document.getElementById("share-twitter");
@@ -276,15 +277,6 @@ function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons)
     }
 }
 // Helpers ---------------------------------
-/**
- * Get a cookie from the document cookies
- */
-function getCookie(cookiename) {
-    // get name followed by anything except a semicolon
-    let cookiestring = RegExp(cookiename + "=[^;]+").exec(document.cookie);
-    // return everything after the equal sign, or an empty string if the cookie name not found
-    return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./, "") : "");
-}
 /**
  * Get time unit in a format of two digits: 00, 01, or 10
  */
@@ -355,7 +347,7 @@ function getQuestionData() {
  * Get questions number based on the selected level 
  */
 function getTotalQuestions() {
-    let level = getCookie("level");
+    let level = localStorage.getItem('level');
     let totalQuestion;
     switch (level) {
         case 'master':
