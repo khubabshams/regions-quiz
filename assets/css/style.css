@@ -23,8 +23,7 @@ html {
 
 /* Section */
 section {
-    min-height: 100vh;
-    width: 100vw;
+    min-height: 95vh;
     background-color: #03AEB8;
     margin-bottom: 30px;
     padding: 5px;
@@ -73,11 +72,11 @@ body {
 header {
     font-family: 'Roboto', sans-serif;
     height: 5vh;
+    width: auto;
 }
 
 /* Logo */
 #logo {
-    font-size: 125%;
     width: 10%;
     color: #03AEB8;
     text-align: center;
@@ -90,7 +89,8 @@ header {
     font-size: 125%;
     background: #FFFF;
     color: #03AEB8;
-    width: 300px;
+    width: 35%;
+    border: 1px solid #FFB402;
     -webkit-clip-path: circle(24px at 30px 24px);
     clip-path: circle(24px at 32px 24px);
     -webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
@@ -98,7 +98,6 @@ header {
 }
 
 #menu:hover {
-    z-index: 1000;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
     -webkit-transition-duration: 0.75s;
@@ -214,14 +213,11 @@ fieldset input:checked+label {
 
 /* Main Section */
 .main-section {
-    overflow: hidden;
-    padding-top: 5%;
     width: 100%;
 }
 
 /* Quiz Main */
 #quiz-main {
-    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -249,20 +245,19 @@ fieldset input:checked+label {
 
 /* Quiz Page */
 #question-counter {
+    width: 33%;
     float: left;
-    margin-top: 20px;
-    margin-left: 20px;
+    padding-top: 20px;
 }
 
 #score-container {
+    width: 33%;
     float: right;
-    margin-top: 20px;
-    margin-right: 20px;
+    padding-top: 20px;
 }
 
 #timer {
-    margin-top: 20px;
-    margin-right: 20px;
+    width: 33%;
 }
 
 #question-counter,
@@ -287,12 +282,12 @@ fieldset input:checked+label {
 }
 
 #highcharts-figure {
-    height: 30%;
-    width: 50%;
+    height: 50%;
+    width: 80%;
 }
 
 #answer-container {
-    display: flex;
+    display: block;
     margin-bottom: 30px;
 }
 
@@ -302,14 +297,32 @@ fieldset input:checked+label {
     margin-bottom: 2px;
 }
 
-#continent::before {
-    content: "Continent ";
+#question-container {
     color: #FFB402;
+    background-color: #FFFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: auto;
+    border: 2px solid #FFB402;
+}
+
+#continent::before {
+    content: "Region located in ";
+    color: #03AEB8;
+}
+
+#continent::after {
+    content: " ";
 }
 
 #capital::before {
-    content: "Capital ";
-    color: #FFB402;
+    content: "and it's capital is ";
+    color: #03AEB8;
+}
+
+#capital::after {
+    content: "?";
+    color: #03AEB8;
 }
 
 .dummy-answer {
