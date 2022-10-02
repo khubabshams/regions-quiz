@@ -129,6 +129,7 @@ function getQuizInfo() {
 function addAnswerEventListener() {
     let answerButtons = document.getElementsByClassName("answer");
     for (let answerButton of answerButtons) {
+        // mouse clicks
         answerButton.addEventListener("click", function () {
             // selected answer value
             const countryId = this.value;
@@ -163,6 +164,19 @@ function addAnswerEventListener() {
             }, 500);
         });
     }
+    // hotkey clicks
+    document.addEventListener("keydown", function (e) {
+        // hotkeys are 1, 2, 3, 4
+        const hotkeysList = ['Digit1', 'Digit2', 'Digit3', 'Digit4'];
+        // check if the user pressed (ALT + HOTKEY)
+        if (e.altKey && hotkeysList.includes(e.code)) {
+            e.preventDefault();
+            // get the answer number (answer button index)
+            const answerIndex = parseInt(e.code.replace('Digit', '')) - 1;
+            // click the selected answer button
+            answerButtons[answerIndex].click();
+        }
+    });
 }
 /**
  * Set timer in the timer pad
