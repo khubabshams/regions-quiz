@@ -96,7 +96,7 @@ h3 {
 /* Question */
 #continent::before {
     content: "Which country located in ";
-    color: #FFB402;
+    color: #fff;
 }
 
 #continent::after {
@@ -105,12 +105,12 @@ h3 {
 
 #capital::before {
     content: "and it's capital is ";
-    color: #FFB402;
+    color: #fff;
 }
 
 #capital::after {
     content: "?";
-    color: #FFB402;
+    color: #fff;
 }
 
 /* Footer */

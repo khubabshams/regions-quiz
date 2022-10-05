@@ -17,9 +17,8 @@ import {
     collection,
     doc,
     setDoc,
-    getDoc,
     getDocs,
-    deleteDoc
+    deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js';
 
 // DOM loaded event listener
