@@ -18,6 +18,10 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -27,186 +31,225 @@
 
 <body>
 
+    <!-- Header -->
     <header>
-        <!-- Logo -->
-        <a href="index.html" id="logo">
-            <h1>
-                RegionsQuiz
-            </h1>
-        </a>
-
-        <!-- Navigation Bar -->
-        <nav id="menu">
-            <div class="navicon">
-                <div></div>
+        <!-- Logo & Navbar -->
+        <nav class="navbar navbar-expand-sm bg-light navbar-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <h1>
+                        <i class="fa-solid fa-earth-americas"></i> RegionsQuiz
+                    </h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="index.html#quiz-main" class="nav-link">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#quick-tips" class="nav-link">Quick Tips</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#scoreboards" class="nav-link">Scoreboards</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-
-            <a href="index.html#quiz-main">
-                Home
-            </a>
-
-            <a href="#quick-tips">
-                Quick Tips
-            </a>
-
-            <a href="#scoreboards">
-                Scoreboards
-            </a>
-
         </nav>
     </header>
 
-    <section id="quiz-main" class="main-section">
-        <!-- Section Header -->
-        <h2 class="section-header">Test Your Regions Knowledge</h2>
+    <div id="parent-container" class="container">
+        <div class="row section">
+            <!-- Start Form -->
+            <div id="quiz-main" class="container-overlay justify-content-center align-items-center">
+                <!-- Section Header -->
+                <h2 class="mb-3">Test Your Regions Knowledge</h2>
 
-        <form id="config-form" method="GET">
-            <!-- Nick Name -->
-            <label for="nick-name">Nick Name</label>
-            <input type="text" id="nick-name" name="nick-name" required="required" autofocus />
+                <form id="config-form" method="GET">
+                    <!-- Nick Name -->
+                    <div class="input-group input-group-lg mb-3">
+                        <input type="text" id="nick-name" name="nick-name" class="form-control" placeholder="Nick Name"
+                            aria-label="Nick Name" required="required" autofocus autocomplete="off" />
+                    </div>
 
-            <!-- Level Selection -->
-            <fieldset>
-                <!-- <legend>Level</legend> -->
+                    <!-- Level Selection -->
+                    <div class="btn-group btn-group-lg bg-light mb-3 w-100" role="group" aria-label="Choose the quiz level">
+                        <!-- Champion -->
+                        <input type="radio" class="btn-check" name="level" id="champion" value="champion" autocomplete="off" checked>
+                        <label class="btn btn-outline-info" for="champion">Champion</label>
+
+                        <!-- Master -->
+                        <input type="radio" class="btn-check" name="level" id="master" value="master" autocomplete="off">
+                        <label class="btn btn-outline-warning" for="master">Master</label>
+
+                        <!-- Legendary -->
+                        <input type="radio" class="btn-check" name="level" id="legendary" value="legendary" autocomplete="off">
+                        <label class="btn btn-outline-danger" for="legendary">Legendary</label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="btn-group btn-group-lg d-grid gap-2 mx-auto col-6" role="group" aria-label="Start Quiz">
+                        <button type="submit" class="btn btn-success">Start</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="row section">
+            <!-- Quick Tips -->
+            <div id="quick-tips" class="container-overlay justify-content-center align-items-center">
+                <!-- Section Header -->
+                <h2 class="mb-3">Quick Tips</h2>
+
+                <ul class="mb-3 list-group list-group-flush">
+                    <li class="list-group-item">Use the ALT + [1, 2, 3, 4] or the pointer to select the correct answer.
+                    </li>
+                    <li class="list-group-item">Rotate the 3d globe to find the region position, and a hint for the
+                        correct answer.</li>
+                    <li class="list-group-item">Every correct answer will get you 1 point, wrong answers deducts
+                        nothing.</li>
+                    <li class="list-group-item">Ranking is based on the combination of how your score and the finishing
+                        time.</li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="row section">
+            <!-- Scoreboards -->
+            <div id="scoreboards" class="container-overlay col-12 justify-content-center align-items-center">
+                <!-- Section Header -->
+                <h2 class="mb3">Score Boards</h2>
+                <div class="row">
+                    <!-- Legends Board -->
+                    <div class="legend-table col-sm-6 col-md-4 col-lg-4 mb-3">
+                        <h3>Legends</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Nickname
+                                    </th>
+                                    <th>
+                                        Score
+                                    </th>
+                                    <th>
+                                        Time
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="legends-scoresheet">
+                                <tr>
+                                    <td colspan="3"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Masters Board -->
+                    <div class="master-table col-sm-6 col-md-4 col-lg-4 mb-3">
+                        <h3>Masters</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Nickname
+                                    </th>
+                                    <th>
+                                        Score
+                                    </th>
+                                    <th>
+                                        Time
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="masters-scoresheet">
+                                <tr>
+                                    <td colspan="3"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Champions Board -->
+                    <div class="champion-table col-sm-6 col-md-4 col-lg-4 mb-3">
+                        <h3>Champions</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Nickname
+                                    </th>
+                                    <th>
+                                        Score
+                                    </th>
+                                    <th>
+                                        Time
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="champions-scoresheet">
+                                <tr>
+                                    <td colspan="3"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="panel-footer">
+            <div class="row">
                 <ul>
                     <li>
-                        <input type="radio" name="level" id="champion" value="champion" checked="checked">
-                        <label for="champion">Champion</label>
-                    </li>
-
-                    <li>
-                        <input type="radio" name="level" id="master" value="master">
-                        <label for="master">Master</label>
+                        <!-- Facebook -->
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="Like our page on Facebook (Opens in a new tab)">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
                     </li>
                     <li>
-                        <input type="radio" name="level" id="legendary" value="legendary">
-                        <label for="legendary">Legendary</label>
+                        <!-- Twitter -->
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="Follow us on Twitter (Opens in a new tab)">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <!-- Youtube -->
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+                            aria-label="Subscribe on our Youtube channel (Opens in a new tab)">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
                     </li>
                 </ul>
-            </fieldset>
 
-            <!-- Submit Button -->
-            <button type="submit">Start</button>
-        </form>
-    </section>
-
-    <section id="quick-tips" class="main-section">
-        <!-- Section Header -->
-        <h2 class="section-header">Quick Tips</h2>
-        <p><i class="fa-solid fa-earth-americas"></i> Use the ALT + [1, 2, 3, 4] or the pointer to select the correct answer.</p>
-        <p><i class="fa-solid fa-earth-americas"></i> Rotate the 3d globe to find the region position, and a hint for the correct answer.</p>
-        <p><i class="fa-solid fa-earth-americas"></i> Every correct answer will get you 1 point, wrong answers deducts nothing.</p>
-        <p><i class="fa-solid fa-earth-americas"></i> Ranking is based on the combination of how your score and the finishing time.</p>
-    </section>
-
-    <section id="scoreboards" class="main-section">
-        <!-- Section Header -->
-        <h2 class="section-header">Score Boards</h2>
-
-        <!-- Legends Board -->
-        <h3>Legends</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Nickname
-                    </th>
-                    <th>
-                        Score
-                    </th>
-                    <th>
-                        Time
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="legends-scoresheet">
-                <tr>
-                    <td colspan="3"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Masters Board -->
-        <h3>Masters</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Nickname
-                    </th>
-                    <th>
-                        Score
-                    </th>
-                    <th>
-                        Time
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="masters-scoresheet">
-                <tr>
-                    <td colspan="3"></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- Champions Board -->
-        <h3>Champions</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Nickname
-                    </th>
-                    <th>
-                        Score
-                    </th>
-                    <th>
-                        Time
-                    </th>
-                </tr>
-            </thead>
-            <tbody id="champions-scoresheet">
-                <tr>
-                    <td colspan="3"></td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <footer>
-        <ul>
-            <li>
-                <!-- Facebook -->
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
-                    aria-label="Like our page on Facebook (Opens in a new tab)">
-                    <i class="fa-brands fa-facebook-f"></i>
-                </a>
-            </li>
-            <li>
-                <!-- Twitter -->
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                    aria-label="Follow us on Twitter (Opens in a new tab)">
-                    <i class="fa-brands fa-twitter"></i>
-                </a>
-            </li>
-            <li>
-                <!-- Youtube -->
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
-                    aria-label="Subscribe on our Youtube channel (Opens in a new tab)">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-            </li>
-        </ul>
+            </div>
     </footer>
 
     <!-- Scripts-->
-    <script type="module" src="assets/js/script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/293685c6a6.js" crossorigin="anonymous"></script>
+
     <!-- Highcharts Scripts -->
     <script src="https://unpkg.com/topojson-client@3"></script>
     <script src="https://code.highcharts.com/maps/highmaps.js"></script>
     <script src="https://code.highcharts.com/maps/modules/data.js"></script>
     <script src="https://code.highcharts.com/maps/modules/exporting.js"></script>
+
+    <!-- Custom Script -->
+    <script type="module" src="assets/js/script.js"></script>
 
 
 </body>

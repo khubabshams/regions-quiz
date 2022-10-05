@@ -1,266 +1,50 @@
 /* Google font import */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Mulish:wght@300&family=Quattrocento+Sans&family=Roboto&display=swap');
 
-/*
-Colors Use:
-#03AEB8 Background - blu
-#FFB402 Headers - yel
-#FC4662 Buttons - red
-#FFFF Text
-*/
-
-/* General styling */
 * {
     box-sizing: border-box;
-    font-size: 110%;
-}
-
-html {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #FFFF;
-    color: #FFFF;
-}
-
-/* Section */
-section {
-    min-height: 95vh;
-    background-color: #03AEB8;
-    margin-bottom: 30px;
-    padding: 5px;
-}
-
-/* Anchors */
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* Buttons */
-button {
-    background-color: #FC4662;
-    color: #FFFF;
-    border: 2px solid #FFFF;
-    border-radius: 10px;
-    height: 50px;
-    width: 35%;
-    cursor: pointer;
-}
-
-button:hover {
-    border: 2px solid #FFB402;
-}
-
-/* Inputs */
-input {
-    border: 2px solid #FFFF;
-    border-radius: 10px;
-    width: 100px;
-    height: 30px;
-}
-
-input:hover {
-    border: 2px solid #FFB402;
-    accent-color: #FFB402;
-}
-
-/* Body styling*/
-body {
-    margin: 20px;
 }
 
 /* Header */
 header {
     font-family: 'Roboto', sans-serif;
-    height: 5vh;
-    width: auto;
 }
 
-/* Logo */
-#logo {
-    width: 10%;
-    color: #03AEB8;
-    text-align: center;
-}
-
-/* Menu */
-#menu {
-    position: relative;
-    z-index: 2;
-    font-size: 125%;
-    background: #FFFF;
-    color: #03AEB8;
-    width: 35%;
-    border: 1px solid #FFB402;
-    -webkit-clip-path: circle(24px at 30px 24px);
-    clip-path: circle(24px at 32px 24px);
-    -webkit-transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
-    transition: -webkit-clip-path 0.5625s, clip-path 0.375s;
-}
-
-#menu:hover {
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
-    -webkit-transition-duration: 0.75s;
-    transition-duration: 0.75s;
-    -webkit-clip-path: circle(390px at 225px 24px);
-    clip-path: circle(390px at 150px 24px);
-}
-
-#menu a {
-    display: block;
-    line-height: 50px;
-    padding: 0 20px;
-    color: inherit;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#menu a:hover {
-    background: #03AEB8;
-    color: #FFFF;
-    border: 1px solid #FFB402;
-}
-
-
-/* Same line header and nav menu */
-#logo,
-#menu {
-    line-height: 5vh;
-}
-
-/* Elipsis Menu Icon */
-.navicon {
-    padding: 23px 20px;
-    cursor: pointer;
-    -webkit-transform-origin: 32px 24px;
-    -ms-transform-origin: 32px 24px;
-    transform-origin: 32px 24px;
-}
-
-.navicon div {
-    position: absolute;
-    width: 20px;
-    height: 2px;
-    background: #03AEB8;
-}
-
-.navicon div:before,
-.navicon div:after {
-    display: block;
-    content: "";
-    width: 20px;
-    height: 2px;
-    background: #03AEB8;
-    position: absolute;
-}
-
-.navicon div:before {
-    top: -7px;
-}
-
-.navicon div:after {
-    top: 7px;
-}
-
-
-/* Section Header */
-.section-header {
-    color: #FFB402;
-    text-align: center;
-    margin-bottom: 5%;
-}
-
-/* H2 , H3 */
-h2,
-h3 {
-    font-family: 'Roboto', sans-serif;
-}
-
-/* Fieldset */
-fieldset {
-    border: 0;
-}
-
-fieldset label {
-    display: block;
-}
-
-fieldset ul {
-    list-style: none;
-}
-
-fieldset li {
-    display: inline-block;
-    margin-right: 15px;
-}
-
-fieldset input {
-    visibility: hidden;
-}
-
-fieldset label {
-    cursor: pointer;
-}
-
-fieldset input:checked+label {
-    background: #FFB402;
-    border-radius: 10px;
-}
-
-
-/* Main Section */
-.main-section {
-    width: 100%;
-}
-
-/* Quiz Main */
-#quiz-main {
-    text-align: center;
-}
-
-#nick-name {
-    width: 30%;
-    height: 50px;
-    color: #FFB402;
+/* Body */
+body {
+    background: url('../images/world_map_with_flags_bg.jpg') no-repeat;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
 
-#nick-name:focus {
-    border: 3px solid #FFB402;
+/* Headings */
+h1,
+h2,
+h3 {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
-/* Quick Tips */
-#quick-tips p {
-    margin: 40px 100px;
-    font-size: 120%;
+/* Overlays */
+.container-overlay {
+    background: rgba(252, 70, 98, 0.70);
+    height: 60vh;
+    padding: 10vh 10px;
 }
 
-
-/* Quiz Page */
-#question-counter {
-    width: 33%;
-    float: left;
-    padding-top: 20px;
+.question-container-overlay {
+    background: rgba(252, 70, 98, 0.70);
+    padding: 10px 10px;
 }
 
-#score-container {
-    width: 33%;
-    float: right;
-    padding-top: 20px;
+.section {
+    margin-top: 10%;
 }
 
-#timer {
-    width: 33%;
-}
-
-#question-counter,
-#score-container,
-#timer {
-    line-height: 20px;
-}
+/* Quiz Info */
 
 #question-counter::before {
     content: "Question: ";
@@ -277,33 +61,9 @@ fieldset input:checked+label {
     color: #FFB402;
 }
 
-#highcharts-figure {
-    height: 50%;
-    width: 80%;
-}
-
-#answer-container {
-    display: block;
-    margin-bottom: 30px;
-}
-
-#answers-container button {
-    width: 40%;
-    height: 50%;
-    margin-bottom: 2px;
-    text-align: left;
-}
-
-
-#question-container {
-    color: #FFB402;
-    background-color: #FFFF;
-    margin: 20px 40px;
-    border: 2px solid #FFB402;
-}
-
+/* Question */
 #continent::before {
-    content: "Region located in ";
+    content: "Which country located in ";
     color: #03AEB8;
 }
 
@@ -319,43 +79,4 @@ fieldset input:checked+label {
 #capital::after {
     content: "?";
     color: #03AEB8;
-}
-
-.dummy-answer {
-    background-color: rgb(124, 120, 120);
-}
-
-.wrong-answer {
-    background-color: rgb(199, 6, 6);
-}
-
-.correct-answer {
-    background-color: rgb(30, 230, 11);
-}
-
-
-/* Footer */
-footer {
-    color: #03AEB8;
-    text-align: center;
-}
-
-footer li {
-    display: inline;
-    margin-right: 20px;
-    list-style-type: none;
-}
-
-.fa-square-twitter:hover,
-.fa-twitter:hover {
-    color: rgb(37, 163, 247);
-}
-
-.fa-square-facebook:hover,
-.fa-facebook-f:hover {
-    color: rgb(8, 8, 153);
-}
-
-.fa-youtube:hover {
-    color: rgb(190, 10, 10);
 }

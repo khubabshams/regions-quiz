@@ -1,30 +1,37 @@
-<!-- Map Container -->
-<figure class="highcharts-figure">
-    <div id="map-container">
+<div id="quiz-main">
+    <!-- Map Container -->
+    <figure class="highcharts-figure">
+        <div id="map-container">
+        </div>
+    </figure>
+
+    <div id="question" class="question-container-overlay justify-content-center align-items-center">
+        <!-- Quiz Info -->
+        <div id="quiz-info" class="row text-center mb-2">
+            <!-- Questions Counter (Question/Total Questions) -->
+            <span id="question-counter" class="col-4"></span>
+
+            <!-- Score -->
+            <span id="score-container" class="col-4">0</span>
+
+            <!-- Timer (Minutes:Seconds) -->
+            <span id="timer" class="pull-right col-4">00:00</span>
+        </div>
+        <!-- Quesion Text -->
+        <div id="question-container">
+            <h2><span id="continent"></span><span id="capital"></span></h2>
+        </div>
+
+        <!-- Possible Answers -->
+        <div id="answers-container btn-group btn-group-lg d-flex justify-content-evenly">
+            <div class="row d-flex justify-content-evenly gap-1 mb-1">
+                <button class="answer-btn fs-4 text-light btn btn-info col-xs-11 col-md-5"></button>
+                <button class="answer-btn fs-4 text-light btn btn-info col-xs-11 col-md-5"></button>
+            </div>
+            <div class="row d-flex justify-content-evenly gap-1 mb-1">
+                <button class="answer-btn fs-4 text-light btn btn-info col-xs-11 col-md-5"></button>
+                <button class="answer-btn fs-4 text-light btn btn-info col-xs-11 col-md-5"></button>
+            </div>
+        </div>
     </div>
-</figure>
-
-<!-- Quiz Info -->
-<div id="quiz-info">
-    <!-- Questions Counter (Question/Total Questions) -->
-    <span id="question-counter"></span>
-
-    <!-- Score -->
-    <span id="score-container">0</span>
-
-    <!-- Timer (Minutes:Seconds) -->
-    <span id="timer">00:00</span>
-</div>
-
-<!-- Quesion Text -->
-<div id="question-container">
-    <h2><span id="continent"></span><span id="capital"></span></h2>
-</div>
-
-<!-- Possible Answers -->
-<div id="answers-container">
-    <button class="answer"></button>
-    <button class="answer"></button>
-    <button class="answer"></button>
-    <button class="answer"></button>
 </div>
