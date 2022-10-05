@@ -12,13 +12,15 @@ import {
 
 import {
     getFirestore,
+    query,
+    where,
     collection,
     doc,
     setDoc,
     getDoc,
     getDocs,
     deleteDoc
-} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
+} from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js';
 
 // DOM loaded event listener
 document.addEventListener("DOMContentLoaded", function () {
@@ -343,6 +345,43 @@ function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons)
  * Load scoreboards from firebase db
  */
 async function loadScoreboards() {
+    // get scoreboard collection
+    const scoreBoardCollection = getScoreboardFirestoreCollection();
+
+    // levels
+    const scoreLevelArray = ['champion', 'master', 'legend']
+
+    // variables
+    let querySnapshot, allLevelScoresheetRows, newRowHtml, queryData;
+
+    for (let scoreLevel of scoreLevelArray) {
+        // initialize scoresheet rows
+        allLevelScoresheetRows = '';
+
+        // get level scores 
+        querySnapshot = await getDocs(query(scoreBoardCollection, where("level", "==", scoreLevel)));
+        querySnapshot.forEach((doc) => {
+            if (doc.id) {
+                // set retrieved data
+                queryData = doc.data();
+                // build row html text
+                newRowHtml = `<tr><td scope="col">${queryData.name}</td><td scope="col">${queryData.score}</td><td scope="col">${queryData.time}</td></tr>`;
+                // add row to scoresheet
+                allLevelScoresheetRows += newRowHtml;
+            }
+        });
+        if (allLevelScoresheetRows) {
+            // set scoresheet
+            document.getElementById(`${scoreLevel}s-scoresheet`).innerHTML = allLevelScoresheetRows;
+        }
+    }
+}
+// Helpers ---------------------------------
+
+/**
+ * Get the firestore scoreboard collection
+ */
+ function getScoreboardFirestoreCollection() {
     // set firebase config 
     const firebaseConfig = {
         apiKey: "AIzaSyBlK5LJhWKA0wHzvbIy4D4OMsl8vnKve_Y",
@@ -356,23 +395,13 @@ async function loadScoreboards() {
 
     // initialize Firebase
     const app = initializeApp(firebaseConfig);
-    console.log("app --> ", app);
 
     // get db
     const db = getFirestore(app);
 
-    // get collection ref
-    const scoreBoardRef = collection(db, "scoreboard");
-
-    const q = query(scoreBoardRef, where("name", "==", 'khubab'));
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
-    });
-
+    // return collection ref
+    return collection(db, "scoreboard");
 }
-// Helpers ---------------------------------
 /**
  * Get time unit in a format of two digits: 00, 01, or 10
  */

@@ -53,8 +53,12 @@ h3 {
 
 /* Scoreboards */
 .table thead {
-    color: #fff;
+    color: #FFB402;
     border: #fff 1px solid;
+}
+
+.table td {
+    color: #fff;
 }
 
 /* Overlays */
