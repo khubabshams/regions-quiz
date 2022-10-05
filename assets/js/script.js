@@ -246,7 +246,7 @@ function showScore(score, time) {
         document.getElementById("quiz-main").innerHTML = response;
     }).then(() => {
         // set score, time
-        renderScore(score, time);
+        renderScoreData(score, time);
         // set sharing links
         renderShareLink(score);
         // set play-again button action listener
@@ -257,7 +257,7 @@ function showScore(score, time) {
 /**
  * Set score message based on the achieved score over the total score
  */
-function renderScore(score, time) {
+function renderScoreData(score, time) {
     // total score == total questions number
     //  acheived score / total score = score rate
     const scoreRate = score / getTotalQuestions();
