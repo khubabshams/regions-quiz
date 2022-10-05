@@ -10,6 +10,20 @@ header {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Nav */
+.navbar-custom {
+    background-color: #03AEB8;
+    color: #fff;
+}
+
+.navbar-custom a {
+    color: inherit;
+}
+
+.navbar-custom a:hover {
+    color: rgba(252, 70, 98, 0.90);
+}
+
 /* Body */
 body {
     background: url('../images/world_map_with_flags_bg.jpg') no-repeat;
@@ -28,15 +42,22 @@ h3 {
     font-family: 'Roboto', sans-serif;
 }
 
+/* Config Form */
+#config-form {
+    width: 70%;
+    margin-left: 15%;
+    align-items: center;
+}
+
 /* Overlays */
 .container-overlay {
-    background: rgba(252, 70, 98, 0.70);
+    background: rgba(252, 70, 98, 0.90);
     height: 60vh;
     padding: 10vh 10px;
 }
 
 .question-container-overlay {
-    background: rgba(252, 70, 98, 0.70);
+    background: rgba(252, 70, 98, 0.90);
     padding: 10px 10px;
 }
 
@@ -45,7 +66,6 @@ h3 {
 }
 
 /* Quiz Info */
-
 #question-counter::before {
     content: "Question: ";
     color: #FFB402;
@@ -64,7 +84,7 @@ h3 {
 /* Question */
 #continent::before {
     content: "Which country located in ";
-    color: #03AEB8;
+    color: #FFB402;
 }
 
 #continent::after {
@@ -73,10 +93,10 @@ h3 {
 
 #capital::before {
     content: "and it's capital is ";
-    color: #03AEB8;
+    color: #FFB402;
 }
 
 #capital::after {
     content: "?";
-    color: #03AEB8;
+    color: #FFB402;
 }
