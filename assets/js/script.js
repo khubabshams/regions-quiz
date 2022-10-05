@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // store inputs in localStorage
         localStorage.setItem('nickName', `${nickName}`);
         localStorage.setItem('level', `${level}`);
-
+        
         // start quiz
         runQuiz();
     });
@@ -40,7 +40,7 @@ window.addEventListener('beforeunload', (event) => {
  */
 function runQuiz() {
     fetch("./quiz.html").then(res => res.text()).then((response) => {
-        document.getElementById("quiz-main").innerHTML = response;
+        document.getElementById("quiz-main").outerHTML = response;
     }).then(() => {
         // scroll into question area
         document.getElementById("question-container").scrollIntoView();
@@ -78,12 +78,22 @@ function renderQuestionData() {
     // render map
     renderMap(questionData);
     // load the answers
-    let answerbuttons = document.getElementsByClassName("answer");
+    let answerbuttons = document.getElementsByClassName("answer-btn");
     for (let i = 0; i < answerbuttons.length; i++) {
-        answerbuttons[i].classList.remove("dummy-answer");
-        answerbuttons[i].classList.remove("wrong-answer");
-        answerbuttons[i].classList.remove("correct-answer");
+        // enable button
+        answerbuttons[i].removeAttribute("disabled");
+
+        // set the normal layout
+        answerbuttons[i].classList.add("btn-info");
+
+        // remove answer status class
+        answerbuttons[i].classList.remove("btn-secondary");
+        answerbuttons[i].classList.remove("btn-danger");
+        answerbuttons[i].classList.remove("btn-success");
+
+        // set the new answer
         answerbuttons[i].innerText = `${i+1}. ${questionData.answers[i].name}`;
+        // set the answer id
         answerbuttons[i].value = questionData.answers[i].id;
     }
 }
@@ -127,7 +137,7 @@ function getQuizInfo() {
  * Add on click event listeners to answers buttons
  */
 function addAnswerEventListener() {
-    let answerButtons = document.getElementsByClassName("answer");
+    let answerButtons = document.getElementsByClassName("answer-btn");
     for (let answerButton of answerButtons) {
         // mouse clicks
         answerButton.addEventListener("click", function () {
@@ -161,7 +171,7 @@ function addAnswerEventListener() {
                 } else {
                     showScore(quizInfo.score, quizInfo.time);
                 }
-            }, 500);
+            }, 1000);
         });
     }
     // hotkey clicks
@@ -220,6 +230,8 @@ function showScore(score, time) {
         renderFinalMessage(score, time);
         // set sharing links
         renderShareLink(score);
+        // set play-again button action listener
+        playAgainAddEventListener();
         // todo: set ranking, and trophy after compare score to db top-10
     });
 }
@@ -273,19 +285,38 @@ function renderShareLink(score) {
     twAnchor.href = twLink;
 }
 /**
+ * Set the play again button action
+ */
+function playAgainAddEventListener(){
+    // play-again button
+    let playAgainButton = document.getElementById("play-again");
+    
+    playAgainButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        // start the quiz again
+        runQuiz();
+    });
+}
+
+/**
  * Update buttons style of the button of correct answer and wrong answers
  */
 function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons) {
     // look for the answer button of the right answer 
     for (let answerButton of allAnswerButtons) {
+        // disable answer button # Todo: show a lighter color on disabled
+        answerButton.setAttribute("disabled", "");
+        // remove normal layout
+        answerButton.classList.remove("btn-info")
         // button is correct answer 
         if (answerButton.value === countryId) {
-            answerButton.classList.add("correct-answer");
+            answerButton.classList.add("btn-success");
         } else {
             if (answerButton !== clickedAnswerButton) {
-                answerButton.classList.add("dummy-answer");
+                answerButton.classList.add("btn-secondary");
             } else {
-                answerButton.classList.add("wrong-answer");
+                answerButton.classList.add("btn-danger");
             }
         }
     }
