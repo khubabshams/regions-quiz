@@ -127,7 +127,7 @@
                     name: 'Hint',
                     states: {
                         hover: {
-                            color: '#FFB402',
+                            color: '#FC4662',
                             borderColor: '#a4edba'
                         }
                     },
