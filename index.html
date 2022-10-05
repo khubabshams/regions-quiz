@@ -77,17 +77,21 @@
                     </div>
 
                     <!-- Level Selection -->
-                    <div class="btn-group btn-group-lg bg-light mb-3 w-100" role="group" aria-label="Choose the quiz level">
+                    <div class="btn-group btn-group-lg bg-light mb-3 w-100" role="group"
+                        aria-label="Choose the quiz level">
                         <!-- Champion -->
-                        <input type="radio" class="btn-check" name="level" id="champion" value="champion" autocomplete="off" checked>
+                        <input type="radio" class="btn-check" name="level" id="champion" value="champion"
+                            autocomplete="off" checked>
                         <label class="btn btn-outline-info" for="champion">Champion</label>
 
                         <!-- Master -->
-                        <input type="radio" class="btn-check" name="level" id="master" value="master" autocomplete="off">
+                        <input type="radio" class="btn-check" name="level" id="master" value="master"
+                            autocomplete="off">
                         <label class="btn btn-outline-warning" for="master">Master</label>
 
                         <!-- Legendary -->
-                        <input type="radio" class="btn-check" name="level" id="legendary" value="legendary" autocomplete="off">
+                        <input type="radio" class="btn-check" name="level" id="legendary" value="legendary"
+                            autocomplete="off">
                         <label class="btn btn-outline-danger" for="legendary">Legendary</label>
                     </div>
 
@@ -122,51 +126,55 @@
             <!-- Scoreboards -->
             <div id="scoreboards" class="container-overlay col-12 justify-content-center align-items-center">
                 <!-- Section Header -->
-                <h2 class="mb3">Score Boards</h2>
+                <h2 class="mb-3">Score Boards</h2>
                 <div class="row">
                     <!-- Legends Board -->
-                    <div class="legend-table col-sm-6 col-md-4 col-lg-4 mb-3">
+                    <div class="legend-table col-xs-12 col-md-4 col-lg-4 mb-3">
                         <h3>Legends</h3>
-                        <table>
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th scope="col">
                                         Nickname
                                     </th>
-                                    <th>
+                                    <th scope="col">
                                         Score
                                     </th>
-                                    <th>
+                                    <th scope="col">
                                         Time
                                     </th>
                                 </tr>
                             </thead>
                             <tbody id="legends-scoresheet">
-                                <tr>
-                                    <td colspan="3"></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
+
                     <!-- Masters Board -->
-                    <div class="master-table col-sm-6 col-md-4 col-lg-4 mb-3">
+                    <div class="master-table col-xs-12 col-md-4 col-lg-4 mb-3">
                         <h3>Masters</h3>
-                        <table>
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th scope="col">
                                         Nickname
                                     </th>
-                                    <th>
+                                    <th scope="col">
                                         Score
                                     </th>
-                                    <th>
+                                    <th scope="col">
                                         Time
                                     </th>
                                 </tr>
                             </thead>
                             <tbody id="masters-scoresheet">
-                                <tr>
+                                <tr scope="row">
+                                    <td colspan="3"></td>
+                                </tr>
+                                <tr scope="row">
+                                    <td colspan="3"></td>
+                                </tr>
+                                <tr scope="row">
                                     <td colspan="3"></td>
                                 </tr>
                             </tbody>
@@ -174,26 +182,23 @@
                     </div>
 
                     <!-- Champions Board -->
-                    <div class="champion-table col-sm-6 col-md-4 col-lg-4 mb-3">
+                    <div class="champion-table col-xs-12 col-md-4 col-lg-4 mb-3">
                         <h3>Champions</h3>
-                        <table>
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th scope="col">
                                         Nickname
                                     </th>
-                                    <th>
+                                    <th scope="col">
                                         Score
                                     </th>
-                                    <th>
+                                    <th scope="col">
                                         Time
                                     </th>
                                 </tr>
                             </thead>
                             <tbody id="champions-scoresheet">
-                                <tr>
-                                    <td colspan="3"></td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>

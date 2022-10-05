@@ -1,8 +1,19 @@
 /* Google font import */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Mulish:wght@300&family=Quattrocento+Sans&family=Roboto&display=swap');
 
+/* General */
 * {
     box-sizing: border-box;
+}
+
+/* Body */
+body {
+    background: url('../images/world_map_with_flags_bg.jpg') no-repeat;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 
 /* Header */
@@ -20,26 +31,17 @@ header {
     color: inherit;
 }
 
-.navbar-custom a:hover {
-    color: rgba(252, 70, 98, 0.90);
-}
-
-/* Body */
-body {
-    background: url('../images/world_map_with_flags_bg.jpg') no-repeat;
-    color: #fff;
-    background-size: cover;
-    background-position: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+.navbar-nav a:hover {
+    color: rgb(252, 70, 97);
+    font-size: 150%;
 }
 
 /* Headings */
-h1,
 h2,
 h3 {
     text-align: center;
     font-family: 'Roboto', sans-serif;
+    color: #FFB402;
 }
 
 /* Config Form */
@@ -47,6 +49,12 @@ h3 {
     width: 70%;
     margin-left: 15%;
     align-items: center;
+}
+
+/* Scoreboards */
+.table thead {
+    color: #fff;
+    border: #fff 1px solid;
 }
 
 /* Overlays */
