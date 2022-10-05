@@ -1,0 +1,23 @@
+{
+  "name": "regions-quiz",
+  "version": "1.0.0",
+  "description": "![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kshamse/regions-quiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kshamse/regions-quiz/issues"
+  },
+  "homepage": "https://github.com/kshamse/regions-quiz#readme",
+  "dependencies": {
+    "firebase": "^9.10.0"
+  }
+}

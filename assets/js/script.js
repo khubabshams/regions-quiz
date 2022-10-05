@@ -1,12 +1,30 @@
 import {
     getAllCountriesList
 } from './country_list.js';
+
 import {
     renderMap
 } from './highcharts_map.js';
 
+import {
+    initializeApp
+} from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js';
+
+import {
+    getFirestore,
+    collection,
+    doc,
+    setDoc,
+    getDoc,
+    getDocs,
+    deleteDoc
+} from 'https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js';
+
 // DOM loaded event listener
 document.addEventListener("DOMContentLoaded", function () {
+
+    // load scorebords
+    loadScoreboards();
 
     // config form submission event listener
     let configForm = document.getElementById("config-form");
@@ -20,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // store inputs in localStorage
         localStorage.setItem('nickName', `${nickName}`);
         localStorage.setItem('level', `${level}`);
-        
+
         // start quiz
         runQuiz();
     });
@@ -287,10 +305,10 @@ function renderShareLink(score) {
 /**
  * Set the play again button action
  */
-function playAgainAddEventListener(){
+function playAgainAddEventListener() {
     // play-again button
     let playAgainButton = document.getElementById("play-again");
-    
+
     playAgainButton.addEventListener("click", function (event) {
         event.preventDefault();
 
@@ -320,6 +338,39 @@ function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons)
             }
         }
     }
+}
+/**
+ * Load scoreboards from firebase db
+ */
+async function loadScoreboards() {
+    // set firebase config 
+    const firebaseConfig = {
+        apiKey: "AIzaSyBlK5LJhWKA0wHzvbIy4D4OMsl8vnKve_Y",
+        authDomain: "regions-quiz.firebaseapp.com",
+        projectId: "regions-quiz",
+        storageBucket: "regions-quiz.appspot.com",
+        messagingSenderId: "177222278427",
+        appId: "1:177222278427:web:013cb993df67b8bc64c7be",
+        measurementId: "G-7Y6M6F702C"
+    };
+
+    // initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    console.log("app --> ", app);
+
+    // get db
+    const db = getFirestore(app);
+
+    // get collection ref
+    const scoreBoardRef = collection(db, "scoreboard");
+
+    const q = query(scoreBoardRef, where("name", "==", 'khubab'));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+    });
+
 }
 // Helpers ---------------------------------
 /**
