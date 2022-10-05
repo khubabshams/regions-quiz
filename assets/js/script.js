@@ -242,7 +242,7 @@ function nextQuestion(score, questionCounter) {
  * Load the score page content, called when last question been answered
  */
 function showScore(score, time) {
-    fetch("/score.html").then(res => res.text()).then((response) => {
+    fetch("./score.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").innerHTML = response;
     }).then(() => {
         // set score, time
