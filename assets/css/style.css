@@ -108,3 +108,29 @@ h3 {
     content: "?";
     color: #FFB402;
 }
+
+/* Footer */
+footer {
+    margin-top: 10%;
+    background-color: #03AEB8;
+    color: #fff;
+    text-align: center;
+}
+
+footer ul {
+    margin-top: 1%;
+    list-style: none;
+    display: inline-block;
+}
+
+footer li {
+    display: inline-block;
+}
+
+footer a {
+    color: inherit;
+}
+
+footer a:hover {
+    color: rgb(252, 70, 97);
+}
