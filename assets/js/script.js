@@ -17,7 +17,6 @@ import {
     collection,
     addDoc,
     orderBy,
-    limit,
     getDocs,
 } from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js';
 
@@ -389,7 +388,7 @@ async function loadScoreboards() {
         allLevelScoresheetRows = '';
 
         // get level scores 
-        querySnapshot = await getDocs(query(scoreBoardCollection, where("level", "==", scoreLevel)));
+        querySnapshot = await getDocs(query(scoreBoardCollection, where("level", "==", scoreLevel), orderBy("time", "asc"), orderBy("score", "desc")));
         querySnapshot.forEach((doc) => {
             if (doc.id) {
                 // set retrieved data
