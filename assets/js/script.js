@@ -394,7 +394,9 @@ async function loadScoreboards() {
                 // set retrieved data
                 queryData = doc.data();
                 // build row html text
-                newRowHtml = `<tr><td scope="col">${queryData.name}</td><td scope="col">${queryData.score}</td><td scope="col">${queryData.time}</td></tr>`;
+                let time = queryData.time.toString().split('.');
+                time = `${time[0]}:${time[1]}`;
+                newRowHtml = `<tr><td scope="col">${queryData.name}</td><td scope="col">${queryData.score}</td><td scope="col">${time}</td></tr>`;
                 // add row to scoresheet
                 allLevelScoresheetRows += newRowHtml;
             }
