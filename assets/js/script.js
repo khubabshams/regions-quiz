@@ -250,7 +250,6 @@ function showScore(score, time) {
         renderShareLink(score);
         // set play-again button action listener
         playAgainAddEventListener();
-        // todo: set ranking, and trophy after compare score to db top-10
     });
 }
 /**
@@ -280,10 +279,9 @@ async function renderScoreData(score, time) {
         default:
             scoreMessage = "";
     }
-    // add final score
-    scoreMessage = `${scoreMessage}\nFinal Score is ${score}`;
     // set message
-    document.getElementById("score-message").innerText = scoreMessage;
+    document.getElementById("score-message").innerText = `${scoreMessage}\nFinal Score is ${score}`;
+    document.getElementById("ranking-message").innerText = `Your ranking is ${ranking}`;
     // set time
     document.getElementById("finishing-time").innerText = `Finishing time is ${time}`;
 }
