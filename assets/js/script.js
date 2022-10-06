@@ -260,8 +260,6 @@ async function renderScoreData(score, time) {
     //  acheived score / total score = score rate
     let scoreMessage;
     const scoreRate = score / getTotalQuestions();
-
-    const ranking = handleScoreBoard(score, parseFloat(time.replace(':', '.')));
     // check the value of the total score over the achieved score 
     switch (true) {
         case scoreRate >= 0.9:
@@ -279,10 +277,28 @@ async function renderScoreData(score, time) {
         default:
             scoreMessage = "";
     }
-    // set message
+    handleScoreBoard(score, parseFloat(time.replace(':', '.'))).then(function (ranking) {
+        if (ranking <= 10) {
+            let trophyHtml;
+            switch (ranking) {
+                case 1:
+                    trophyHtml = `<i class="fa-solid fa-trophy" style="color: #ffc70f;"></i>`;
+                    break;
+                case 2:
+                    trophyHtml = `<i class="fa-solid fa-trophy" style="color: #e2e2e0;"></i>`;
+                    break;
+                case 3:
+                    trophyHtml = `<i class="fa-solid fa-trophy" style="color: #f47600;"></i>`;
+                    break;
+                default:
+                    trophyHtml = `<i class="fa-solid fa-medal style="color: #ffc70f;"></i>`;
+            }
+            document.getElementById("trophy").innerHTML = trophyHtml;
+        }
+        document.getElementById("ranking").innerText = `Your ranking is #${ranking}`;
+    });
+
     document.getElementById("score-message").innerText = `${scoreMessage}\nFinal Score is ${score}`;
-    document.getElementById("ranking-message").innerText = `Your ranking is ${ranking}`;
-    // set time
     document.getElementById("finishing-time").innerText = `Finishing time is ${time}`;
 }
 
@@ -300,7 +316,7 @@ async function handleScoreBoard(score, time) {
         where("score", ">", score));
     let querySnapshot = await getDocs(rankingQuery);
 
-    if(querySnapshot.size === 0){
+    if (querySnapshot.size === 0) {
         rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')));
         querySnapshot = await getDocs(rankingQuery);
     }
