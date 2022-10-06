@@ -403,7 +403,8 @@ async function loadScoreboards() {
         allLevelScoresheetRows = '';
 
         // get level scores 
-        querySnapshot = await getDocs(query(scoreBoardCollection, where("level", "==", scoreLevel), orderBy("score", "desc"), orderBy("time", "asc"), limit(10)));
+        querySnapshot = await getDocs(query(scoreBoardCollection, where("level", "==", scoreLevel),
+            orderBy("score", "desc"), orderBy("time", "asc"), limit(10)));
         querySnapshot.forEach((doc) => {
             if (doc.id) {
                 // set retrieved data
