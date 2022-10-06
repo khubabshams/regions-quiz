@@ -15,10 +15,10 @@ import {
     query,
     where,
     collection,
-    doc,
-    setDoc,
+    addDoc,
+    orderBy,
+    limit,
     getDocs,
-    deleteDoc,
 } from 'https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js';
 
 // DOM loaded event listener
@@ -244,7 +244,7 @@ function nextQuestion(score, questionCounter) {
 function showScore(score, time) {
     fetch("./score.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").innerHTML = response;
-    }).then(() => {
+    }).then(async () => {
         // set score, time
         renderScoreData(score, time);
         // set sharing links
@@ -257,12 +257,12 @@ function showScore(score, time) {
 /**
  * Set score message based on the achieved score over the total score
  */
-function renderScoreData(score, time) {
+async function renderScoreData(score, time) {
     // total score == total questions number
     //  acheived score / total score = score rate
-    const scoreRate = score / getTotalQuestions();
     let scoreMessage;
-
+    const scoreRate = score / getTotalQuestions();
+    const ranking = handleScoreBoard(score, scoreRate, parseFloat(time.replace(':', '.')));
     // check the value of the total score over the achieved score 
     switch (true) {
         case scoreRate >= 0.9:
@@ -286,6 +286,33 @@ function renderScoreData(score, time) {
     document.getElementById("score-message").innerText = scoreMessage;
     // set time
     document.getElementById("finishing-time").innerText = `Finishing time is ${time}`;
+}
+
+/**
+ * Update scoreboard DB with user's score data and get ranking among top 10
+ * @param {number} score - user's score
+ * @param {number} time - user's finishing time
+ * @returns {number} user's ranking
+ */
+async function handleScoreBoard(score, time) {
+    const scoreBoardCollection = getScoreboardFirestoreCollection();
+    const timedRate = time / score;
+
+    const rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')),
+        where("rate", "<", timedRate), orderBy("rate", "desc"));
+    querySnapshot = await getDocs(rankingQuery);
+
+    const ranking = querySnapshot.length + 1;
+
+    addDoc(scoreBoardCollection, {
+        name: localStorage.getItem('level'),
+        level: localStorage.getItem('nickName'),
+        rate: timedRate,
+        score: score,
+        time: time
+    });
+    return ranking;
+
 }
 /**
  * Update share links of facebook and twitter
@@ -380,7 +407,7 @@ async function loadScoreboards() {
 /**
  * Get the firestore scoreboard collection
  */
- function getScoreboardFirestoreCollection() {
+function getScoreboardFirestoreCollection() {
     // set firebase config 
     const firebaseConfig = {
         apiKey: "AIzaSyBlK5LJhWKA0wHzvbIy4D4OMsl8vnKve_Y",
