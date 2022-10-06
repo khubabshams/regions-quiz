@@ -262,7 +262,8 @@ async function renderScoreData(score, time) {
     //  acheived score / total score = score rate
     let scoreMessage;
     const scoreRate = score / getTotalQuestions();
-    const ranking = handleScoreBoard(score, scoreRate, parseFloat(time.replace(':', '.')));
+
+    const ranking = handleScoreBoard(score, parseFloat(time.replace(':', '.')));
     // check the value of the total score over the achieved score 
     switch (true) {
         case scoreRate >= 0.9:
@@ -296,18 +297,21 @@ async function renderScoreData(score, time) {
  */
 async function handleScoreBoard(score, time) {
     const scoreBoardCollection = getScoreboardFirestoreCollection();
-    const timedRate = time / score;
+    let ranking;
 
-    const rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')),
-        where("rate", "<", timedRate), orderBy("rate", "desc"));
-    querySnapshot = await getDocs(rankingQuery);
+    let rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')),
+        where("score", ">", score));
+    let querySnapshot = await getDocs(rankingQuery);
 
-    const ranking = querySnapshot.length + 1;
+    if(querySnapshot.size === 0){
+        rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')));
+        querySnapshot = await getDocs(rankingQuery);
+    }
+    ranking = querySnapshot.size + 1;
 
     addDoc(scoreBoardCollection, {
-        name: localStorage.getItem('level'),
-        level: localStorage.getItem('nickName'),
-        rate: timedRate,
+        name: localStorage.getItem('nickName'),
+        level: localStorage.getItem('level'),
         score: score,
         time: time
     });
