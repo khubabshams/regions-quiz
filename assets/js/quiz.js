@@ -418,7 +418,7 @@ function getQuestionData() {
         }
     */
     let allCoutriesList = getAllCountriesList();
-    let randomIndex = Math.floor(Math.random() * 253);
+    let randomIndex = Math.floor(Math.random() * 252) + 1;
     let randomIndexes = [];
     randomIndexes.push(randomIndex)
 
@@ -433,7 +433,7 @@ function getQuestionData() {
     let newRandomIndex;
     let answerItem;
     for (let i = 0; i < 3; i++) {
-        newRandomIndex = Math.floor(Math.random() * 253);
+        newRandomIndex = Math.floor(Math.random() * 252) + 1;
         newRandomIndex = !randomIndexes.includes(newRandomIndex) ? newRandomIndex : Math.floor(Math.random() * 253);
 
         randomIndexes.push(newRandomIndex);
