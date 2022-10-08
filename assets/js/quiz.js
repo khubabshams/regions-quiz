@@ -40,13 +40,14 @@ document.addEventListener("DOMContentLoaded", function () {
         runQuiz();
     });
 
-    let contactButton = document.getElementById("contactus");
-    contactButton.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        openContactus();
-    });
-
+    let contactButtons = document.getElementsByClassName("contactus");
+    for(let contactButton of contactButtons){
+        contactButton.addEventListener("click", function (event) {
+            event.preventDefault();
+    
+            openContactus();
+        });
+    }
 });
 /**
  * Show contactus form on quiz-main area, called on 'contact-us' link click
