@@ -56,6 +56,8 @@ function openContactus() {
     fetch("./contactus.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").outerHTML = response;
     }).then(() => {
+        document.getElementById("quiz-main").scrollIntoView();
+        
         let contactForm = document.getElementById("contact-form");
         contactForm.addEventListener("submit", function (event) {
             event.preventDefault();
