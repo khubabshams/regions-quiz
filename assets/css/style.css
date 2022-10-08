@@ -46,9 +46,7 @@ h3 {
 
 /* Config Form */
 #config-form {
-    width: 70%;
-    margin-left: 15%;
-    align-items: center;
+    width: 100%;
 }
 
 /* Scoreboards */
@@ -64,17 +62,17 @@ h3 {
 /* Overlays */
 .container-overlay {
     background: rgba(252, 70, 98, 0.90);
-    height: 60vh;
-    padding: 10vh 10px;
+    padding: 5vh 5px;
 }
 
 .question-container-overlay {
-    background: rgba(252, 70, 98, 0.90);
-    padding: 10px 10px;
+    background: rgba(252, 70, 98, 0.80);
+    padding: 12px 12px;
+    width: 100%;
 }
 
 .section {
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 /* Quiz Info */
@@ -120,7 +118,7 @@ h3 {
 
 /* Footer */
 footer {
-    margin-top: 10%;
+    margin-top: 5%;
     background-color: #03AEB8;
     color: #fff;
     text-align: center;
@@ -142,4 +140,45 @@ footer a {
 
 footer a:hover {
     color: rgb(252, 70, 97);
+}
+
+/* Media Queries */
+@media only screen and (min-width: 768px) {
+
+    /* Section */
+    .section {
+        margin-top: 10%;
+    }
+
+    /* Config Form */
+    #config-form {
+        width: 70%;
+        margin: 10%;
+    }
+
+    /* Overlays */
+    .container-overlay {
+        min-height: 50vh;
+    }
+
+}
+
+@media only screen and (min-width: 992px) {
+
+    /* Section */
+    .section {
+        margin-top: 5%;
+    }
+
+    /* Config Form */
+    #config-form {
+        width: 70%;
+        margin-left: 15%;
+        margin-right: 15%;
+    }
+
+    /* Overlays */
+    .container-overlay {
+        min-height: 40vh;
+    }
 }
