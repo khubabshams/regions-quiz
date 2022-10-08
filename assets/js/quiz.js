@@ -85,8 +85,8 @@ function submitContactus() {
         contentType: false,
         processData: false
     }).done(function () {
-        feedbackMessage.innerText = 'Your mail has been sent, Thank you!'; 
-        feedbackModal.show(); 
+        feedbackMessage.innerText = 'Your mail has been sent, Thank you!';
+        feedbackModal.show();
     }).fail(function (error) {
         feedbackMessage.innerText = 'Sorry there was a technical problem, Try again later!';
         feedbackModal.show();
@@ -108,9 +108,9 @@ function runQuiz() {
     });
 }
 /**
- * Set the questions and the timer counters, called the first quiz run and on next question action
+ * Set the questions, progress and the timer counters, called the first quiz run and on next question action
  * @param {number} score - user's current score
- * @param {number} questionCounter - question progress
+ * @param {number} questionCounter - questions progress
  */
 function renderQuizInfo(score = 0, questionCounter = 1) {
     let scoreContainerElement = document.getElementById("score-container");
@@ -120,7 +120,7 @@ function renderQuizInfo(score = 0, questionCounter = 1) {
     questionCounterElement.innerText = `${questionCounter}/${getTotalQuestions()}`;
 
     let progressElement = document.getElementById("progress");
-    progressElement.setAttribute("style",`width: ${Math.floor((questionCounter/getTotalQuestions())*100)}%`);
+    progressElement.setAttribute("style", `width: ${Math.floor((questionCounter/getTotalQuestions())*100)}%`);
 }
 /**
  * Load the question and answers and update quiz page, called the first quiz run and on next question action
@@ -148,14 +148,17 @@ function renderQuestionData() {
     }
 }
 /** 
- * Validate the selected answer based on the capital name and continent
+ * Get the correct answer based on the capital name and continent, called if one answer button has been clicked
+ * @param {string} capitalName - current questioned country capital
+ * @param {string} continentName - current questioned country continent
+ * @return {object} country data
  */
 function getCorrectAnswer(capitalName, continentName) {
     const countryFound = getAllCountriesList().filter(country => (country.capital === capitalName && country.continent === continentName));
     return countryFound[0];
 }
 /**
- * Called in case of right answer to increment score on score pad
+ * Increase the current score by one point, called on correct answer clicked
  */
 function incrementScore() {
     const scoreContainer = document.getElementById("score-container");
@@ -164,7 +167,8 @@ function incrementScore() {
     scoreContainer.innerHTML = ++score;
 }
 /**
- * Get quiz progress data (score, time, and question counter)
+ * Get quiz progress data (score, time, and question counter), called on answer button clicked
+ * @return {Object} contains score, time, and questionCounter
  */
 function getQuizInfo() {
     const scoreContainer = document.getElementById("score-container");
@@ -178,7 +182,7 @@ function getQuizInfo() {
     };
 }
 /**
- * Add on click event listeners to answers buttons
+ * Add on click event listeners to answers buttons, called on first quiz run
  */
 function addAnswerEventListener() {
     let answerButtons = document.getElementsByClassName("answer-btn");
@@ -223,7 +227,7 @@ function addAnswerEventListener() {
     });
 }
 /**
- * Set timer in the timer pad
+ * Set timer in the timer pad, called on first quiz run
  */
 function setTimer() {
     const timer = document.getElementById("timer");
@@ -244,14 +248,18 @@ function setTimer() {
     }, 1000);
 }
 /**
- * Iterate the quiz loop
+ * Start a quiz round, called on answer button clicked and there's still one question or more left
+ * @param {number} score - user's current score
+ * @param {number} questionCounter - questions progress
  */
 function nextQuestion(score, questionCounter) {
     renderQuizInfo(score, questionCounter);
     renderQuestionData();
 }
 /**
- * Load the score page content, called when last question been answered
+ * Load the score page content, called when last question has been answered
+ * @param {number} score - user's final score
+ * @param {string} time - time pad content
  */
 function showScore(score, time) {
     fetch("./score.html").then(res => res.text()).then((response) => {
@@ -263,7 +271,9 @@ function showScore(score, time) {
     });
 }
 /**
- * Set score message based on the achieved score over the total score
+ * Set final score message, ranking message, trophy, and finishing time, called after score page loaded
+ * @param {number} score - user's final score
+ * @param {string} time - time pad content 
  */
 async function renderScoreData(score, time) {
     let scoreMessage;
@@ -312,7 +322,7 @@ async function renderScoreData(score, time) {
 
 /**
  * Update scoreboard DB with user's score data and get ranking among top 10
- * @param {number} score - user's score
+ * @param {number} score - user's final score
  * @param {number} time - user's finishing time
  * @returns {number} user's ranking
  */
@@ -340,7 +350,8 @@ async function handleScoreBoard(score, time) {
 
 }
 /**
- * Update share links of facebook and twitter
+ * Update share links of facebook and twitter, called after score page loaded
+ * @param {number} score - user's final score
  */
 function renderShareLink(score) {
     const level = localStorage.getItem('level');
@@ -355,7 +366,7 @@ function renderShareLink(score) {
     twAnchor.href = twLink;
 }
 /**
- * Set the play again button action
+ * Set the play again button event listener, called after score page loaded
  */
 function playAgainAddEventListener() {
     let playAgainButton = document.getElementById("play-again");
@@ -369,6 +380,9 @@ function playAgainAddEventListener() {
 
 /**
  * Update buttons style of the button of correct answer and wrong answers
+ * @param {string} countryId - correct answer id value
+ * @param {object} clickedAnswerButton - clicked answer button
+ * @param {array} allAnswerButtons - list of all answers buttons
  */
 function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons) {
     for (let answerButton of allAnswerButtons) {
@@ -388,7 +402,7 @@ function setAnswerButtonsStyle(countryId, clickedAnswerButton, allAnswerButtons)
     }
 }
 /**
- * Load scoreboards from firebase db
+ * Load scoreboards from firebase db and update the scoresheet tables, called after DOM loaded
  */
 async function loadScoreboards() {
     const scoreBoardCollection = getScoreboardFirestoreCollection();
@@ -420,7 +434,8 @@ async function loadScoreboards() {
 }
 // Helpers ------------------------------------------------------------------
 /**
- * Get the firestore scoreboard collection
+ * Initialize the firestore app and return the scoreboard collection
+ * @return {object} firestore collection
  */
 function getScoreboardFirestoreCollection() {
     const firebaseConfig = {
@@ -440,13 +455,16 @@ function getScoreboardFirestoreCollection() {
     return collection(db, "scoreboard");
 }
 /**
- * Get time unit in a format of two digits: 00, 01, or 10
+ * Change time unit to a format of two digits: 00, 01, or 10
+ * @param {number} timeUnit - time unit (seconds, minutes)
+ * @return {string} stringified two digits number
  */
 function getTimeUnitFormatted(timeUnit) {
     return timeUnit >= 10 ? timeUnit : `0${timeUnit}`;
 }
 /**
- * Get a random question data from countries list and wrong answers
+ * Get a random question data from countries list and possible answers
+ * @return {object} country data and answers list of objects
  */
 function getQuestionData() {
     /* 
@@ -501,6 +519,7 @@ function getQuestionData() {
 }
 /**
  * Get questions number based on the selected level 
+ * @return {number} quiz questions total number
  */
 function getTotalQuestions() {
     let level = localStorage.getItem('level');
@@ -519,6 +538,8 @@ function getTotalQuestions() {
 }
 /**
  * Shuffle a given array
+ * @param {array} array - recognized pattern array
+ * @return {array} shuffled array
  */
 function shuffleArray(array) {
     let currentIndex = array.length,
