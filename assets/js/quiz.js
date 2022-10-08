@@ -1,5 +1,6 @@
 import {
-    getAllCountriesList
+    getAllCountriesList,
+    getAllCountriesListLength
 } from './country_list.js';
 
 import {
@@ -481,7 +482,7 @@ function getQuestionData() {
         }
     */
     let allCoutriesList = getAllCountriesList();
-    let randomIndex = Math.floor(Math.random() * 252) + 1;
+    let randomIndex = getRandomCountryIndex();
     let randomIndexes = [];
     randomIndexes.push(randomIndex)
 
@@ -496,8 +497,8 @@ function getQuestionData() {
     let newRandomIndex;
     let answerItem;
     for (let i = 0; i < 3; i++) {
-        newRandomIndex = Math.floor(Math.random() * 252) + 1;
-        newRandomIndex = !randomIndexes.includes(newRandomIndex) ? newRandomIndex : Math.floor(Math.random() * 252) + 1;
+        newRandomIndex = getRandomCountryIndex();
+        newRandomIndex = !randomIndexes.includes(newRandomIndex) ? newRandomIndex : getRandomCountryIndex();
 
         randomIndexes.push(newRandomIndex);
 
@@ -554,4 +555,11 @@ function shuffleArray(array) {
     }
 
     return array;
+}
+/**
+ * Get a random number in the country array range 
+ * @returns {number} random number between 0 and country array length
+ */
+function getRandomCountryIndex(){
+    return Math.floor(Math.random() * getAllCountriesListLength());
 }
