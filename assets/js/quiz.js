@@ -327,13 +327,12 @@ async function renderScoreData(score, time) {
  */
 async function handleScoreBoard(score, time) {
     const scoreBoardCollection = getScoreboardFirestoreCollection();
-    let ranking;
 
-    let rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')),
+    const rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')),
         where("score", ">", score));
-    let querySnapshot = await getDocs(rankingQuery);
+    const querySnapshot = await getDocs(rankingQuery);
 
-    ranking = querySnapshot.size + 1;
+    const ranking = querySnapshot.size + 1;
 
     addDoc(scoreBoardCollection, {
         name: localStorage.getItem('nickName'),
