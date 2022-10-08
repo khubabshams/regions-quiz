@@ -62,7 +62,9 @@ function openContactus() {
 }
 
 function submitContactus() {
-    var formData = new FormData();
+    let formData = new FormData();
+    let feedbackModal = new bootstrap.Modal(document.getElementById('contactUsFeedback'), {})
+    let feedbackMessage = document.getElementById('feedback');
 
     formData.append('name', document.getElementById('name').value);
     formData.append('email', document.getElementById('email').value);
@@ -78,20 +80,13 @@ function submitContactus() {
         contentType: false,
         processData: false
     }).done(function () {
-        alert('Your mail is sent!');
+        feedbackMessage.innerText = 'Your mail has been sent, Thank you!'; 
+        feedbackModal.show(); 
     }).fail(function (error) {
-        alert('Oops... ' + JSON.stringify(error));
+        feedbackMessage.innerText = 'Sorry there was a technical problem, Try again later!';
+        feedbackModal.show();
     });
 }
-/**
- * Before unload event listener; asks user for confirmation 
- */
-window.addEventListener('beforeunload', (event) => {
-    event.preventDefault();
-
-    event.returnValue = '';
-    return 'Are you sure you leave this page?';
-});
 /**
  * Run and load the quiz page content, called on config form submission
  */
