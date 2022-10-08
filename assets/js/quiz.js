@@ -39,7 +39,50 @@ document.addEventListener("DOMContentLoaded", function () {
         runQuiz();
     });
 
+    let contactButton = document.getElementById("contactus");
+    contactButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        openContactus();
+    });
+
 });
+
+function openContactus() {
+    fetch("./contactus.html").then(res => res.text()).then((response) => {
+        document.getElementById("quiz-main").outerHTML = response;
+    }).then(() => {
+        let contactForm = document.getElementById("contact-form");
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            submitContactus();
+        });
+    });
+}
+
+function submitContactus() {
+    var formData = new FormData();
+
+    formData.append('name', document.getElementById('name').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('message', document.getElementById('message').value);
+
+    formData.append('service_id', 'service_ig48um8');
+    formData.append('template_id', 'template_oeojc66');
+    formData.append('user_id', 'Gls0VvWG_PRVl_YyK');
+
+    $.ajax('https://api.emailjs.com/api/v1.0/email/send-form', {
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false
+    }).done(function () {
+        alert('Your mail is sent!');
+    }).fail(function (error) {
+        alert('Oops... ' + JSON.stringify(error));
+    });
+}
 /**
  * Before unload event listener; asks user for confirmation 
  */
