@@ -48,6 +48,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+/**
+ * Show contactus form on quiz-main area, called on 'contact-us' link click
+ */
 function openContactus() {
     fetch("./contactus.html").then(res => res.text()).then((response) => {
         document.getElementById("quiz-main").outerHTML = response;
@@ -60,7 +63,9 @@ function openContactus() {
         });
     });
 }
-
+/**
+ * Submit mail form and call EmailJs API with ajax request, called on contactus form submission 
+ */
 function submitContactus() {
     let formData = new FormData();
     let feedbackModal = new bootstrap.Modal(document.getElementById('contactUsFeedback'), {})
@@ -103,7 +108,9 @@ function runQuiz() {
     });
 }
 /**
- * Set the questions and the timer counters
+ * Set the questions and the timer counters, called the first quiz run and on next question action
+ * @param {number} score - user's current score
+ * @param {number} questionCounter - question progress
  */
 function renderQuizInfo(score = 0, questionCounter = 1) {
     let scoreContainerElement = document.getElementById("score-container");
@@ -111,9 +118,12 @@ function renderQuizInfo(score = 0, questionCounter = 1) {
 
     let questionCounterElement = document.getElementById("question-counter");
     questionCounterElement.innerText = `${questionCounter}/${getTotalQuestions()}`;
+
+    let progressElement = document.getElementById("progress");
+    progressElement.setAttribute("style",`width: ${Math.floor((questionCounter/getTotalQuestions())*100)}%`);
 }
 /**
- * Load the question and answers and update quiz page
+ * Load the question and answers and update quiz page, called the first quiz run and on next question action
  */
 function renderQuestionData() {
     let questionData = getQuestionData();
@@ -472,7 +482,7 @@ function getQuestionData() {
     let answerItem;
     for (let i = 0; i < 3; i++) {
         newRandomIndex = Math.floor(Math.random() * 252) + 1;
-        newRandomIndex = !randomIndexes.includes(newRandomIndex) ? newRandomIndex : Math.floor(Math.random() * 253);
+        newRandomIndex = !randomIndexes.includes(newRandomIndex) ? newRandomIndex : Math.floor(Math.random() * 252) + 1;
 
         randomIndexes.push(newRandomIndex);
 
