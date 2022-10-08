@@ -1,11 +1,11 @@
-// HighchartsMap Build Exported Function ----------------------------
 /**
- * Render the highcharts map for a given region data
+ * Render the highcharts map for a given region code
+ * @param {string} code - country code
  * credit: https://www.highcharts.com/blog/code-examples/planet-earth/ By Mustapha Mekhatria
  */
- export function renderMap(regionData) {
+ export function renderMap(code) {
     const data = [{
-        'code': regionData.code,
+        'code': code,
         'value': 0
     }];
 

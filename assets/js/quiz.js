@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-
 /**
  * Show contactus form on quiz-main area, called on 'contact-us' link click
  */
@@ -131,7 +130,7 @@ function renderQuestionData() {
     document.getElementById("continent").innerText = questionData.continent;
     document.getElementById("capital").innerText = questionData.capital;
 
-    renderMap(questionData);
+    renderMap(questionData.code);
 
     let answerbuttons = document.getElementsByClassName("answer-btn");
     for (let i = 0; i < answerbuttons.length; i++) {
@@ -319,7 +318,6 @@ async function renderScoreData(score, time) {
     document.getElementById("score-message").innerText = `${scoreMessage}\nFinal Score is ${score}`;
     document.getElementById("finishing-time").innerText = `Finishing time is ${time}`;
 }
-
 /**
  * Update scoreboard DB with user's score data and get ranking among top 10
  * @param {number} score - user's final score
@@ -346,8 +344,8 @@ async function handleScoreBoard(score, time) {
         score: score,
         time: time
     });
-    return ranking;
 
+    return ranking;
 }
 /**
  * Update share links of facebook and twitter, called after score page loaded
@@ -377,7 +375,6 @@ function playAgainAddEventListener() {
         runQuiz();
     });
 }
-
 /**
  * Update buttons style of the button of correct answer and wrong answers
  * @param {string} countryId - correct answer id value
@@ -534,6 +531,7 @@ function getTotalQuestions() {
         default:
             totalQuestion = 10;
     }
+    
     return totalQuestion
 }
 /**

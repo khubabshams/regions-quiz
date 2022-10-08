@@ -259,6 +259,7 @@ var allCountriesList = [
 
 /**
  * Get all regions data (List of Objects)
+ * @return {array} array of country objects
  */
 export function getAllCountriesList() {
     return allCountriesList;
