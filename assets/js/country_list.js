@@ -264,4 +264,11 @@ var allCountriesList = [
 export function getAllCountriesList() {
     return allCountriesList;
 }
+/**
+ * Get the regions data array length
+ * @return {number} array length
+ */
+ export function getAllCountriesListLength() {
+    return allCountriesList.length;
+}
 
