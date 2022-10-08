@@ -333,10 +333,6 @@ async function handleScoreBoard(score, time) {
         where("score", ">", score));
     let querySnapshot = await getDocs(rankingQuery);
 
-    if (querySnapshot.size === 0) {
-        rankingQuery = query(scoreBoardCollection, where("level", "==", localStorage.getItem('level')));
-        querySnapshot = await getDocs(rankingQuery);
-    }
     ranking = querySnapshot.size + 1;
 
     addDoc(scoreBoardCollection, {
