@@ -30,7 +30,6 @@ header {
     color: inherit;
 }
 
-
 #navbar-custom .navbar-nav a:hover {
     color: #FFB402;
     font-size: 150%;
@@ -110,6 +109,18 @@ h3 {
 #capital::after {
     content: "?";
     color: #fff;
+}
+
+/* Score */
+#share a{
+    color: inherit;
+}
+
+#share-facebook{
+    color: #4267B2;
+}
+#share-twitter {
+    color: #1DA1F2;
 }
 
 /* Contact Us */
