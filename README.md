@@ -38,27 +38,37 @@ The site is targeted towards people who love geography and want to learn more ab
 # User Stories
 
 ## User's Stories
-- 
+- I want to know the quiz playing tips.
+- I want to be able to use any name to start the quiz.
+- I want to play a limited number of questions.
+- I want to be able to find a hint for the correct answer.
+- I want to use either the pointer or the keyboard to choose the correct answer.
+- I want to see my score, progress and consumed time while playing the quiz.
+- I want to see my final score and finishing time at the end of the quiz.
+- I want to know my ranking among other users at the end of the quiz
+- I want to be able to contact the site's owner and provide comments about the quiz.
+
 ## Site's Owner Stories
-- 
+- I want the user to deal with an easy-to-navigate and fully responsive site.
+- I want the user to know the correct answer at the end of each round.
+- I want the user to be motivated and challenged.
+- I want a transparent score tracking system.
+- I want the user to be able to send me his feedback and comments.
 
 [(Back to top)](#table-of-contents)
 
 
 
 
+# Features 
 
-## Features 
-
-In this section, you should go over the different parts of your project, and describe each in a sentence or so. You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
 value to use, who this for, what they want to achieve
 
 ### Existing Features
 
 - __Navigation Bar__
-
-  - Featured on all three pages, the full responsive navigation bar includes links to the Logo, Home page, Gallery and Sign Up page and is identical in each page to allow for easy navigation.
-  - This section will allow the user to easily navigate from page to page across all devices without having to revert back to the previous page via the ‘back’ button. 
+  - 
+  - Providing an easy . 
 
 ![Nav Bar](https://github.com/lucyrush/readme-template/blob/master/media/love_running_nav.png)
 
