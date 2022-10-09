@@ -20,6 +20,13 @@
     - [Contact Us Form](#contactus-form)
     - [Footer](#footer)
 - [Testing](#testing)
+    - [Lighthouse Report](#lighthouse-report)
+    - [Validators Testing](#validators-testing)
+    - [Unfixed Bugs](#unfixed-bugs)
+    - [Deployment](#deployment)
+- [Credits](#credits)
+    - [Media](#media)
+    - [Code](#code)
 
 
 # Overview
@@ -150,13 +157,14 @@ The site is targeted towards people who love geography and want to learn more ab
   
   ![Contact Us - Feedback](./docs/screenshots/screen-contactus-feedback.PNG)
 
-
 8. __Footer__
 
   - Includes the option of mailing the site's owner and links to the site-related social media accounts/ pages.
   - *Covered User stories: 10*
 
   ![Footer](./docs/screenshots/screen-footer.PNG)
+
+[(Back to top)](#table-of-contents)
 
 # Testing 
 
@@ -169,20 +177,19 @@ You should also mention in this section any interesting bugs or problems you dis
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
 ## Navigation Bar
-  - 
   - Responsiveness to different screen size achieved by using a collapsible navigation bar triggered on small screens.
 
   ![Navigation on Mobile Screen](./docs/screenshots/screen-nav-mobile.PNG)
 
 ## Lighthouse Report
 
-### Desktop
+- Desktop
   ![Desktop Lighthouse Report](./docs/validation/lighthouse-index.PNG)
 
-### Mobile
+-  Mobile
   ![Mobile Lighthouse Report](./docs/validation/lighthouse-index-mobile.PNG)
 
-## Validator Testing 
+## Validators Testing 
 
 - HTML
   - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fkshamse.github.io%2Fregions-quiz%2Findex.html)
@@ -209,6 +216,8 @@ If this section grows too long, you may want to split it off into a separate fil
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
 
 The live link can be found here - https://kshamse.github.io/regions-quiz/index.html
+
+[(Back to top)](#table-of-contents)
 
 # Credits 
 
