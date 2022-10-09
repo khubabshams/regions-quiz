@@ -1,16 +1,28 @@
 ![RegionsQuiz Logo](./docs/screenshots/logo.PNG)
 
-# Love Running
+# Overview
 
-In this section, you will include one or two paragraphs providing an overview of your project. Essentially, this part is your sales pitch. At this stage, you should have a name for your project so use it! Don’t introduce the project as a Portfolio project for the diploma. In this section, describe what the project hopes to accomplish, who it is intended to target and how it will be useful to the target audience. 
+RegionQuiz is a site to test users' information of regions' names and helps them to grow their knowledge in a challenging interactive way. 
+The site is targeted towards people who love geography and want to learn more about the world's regions and have fun at the same time. 
 
-For example; Love Running is a site that hopes to help keep people motivated to meet up for runs on a regular basis in Dublin, Ireland. The site will be targeted toward runners who are looking for a way to socialise and keep themselves fit. Love Running will be useful for runners to see exactly when and where they should be to join the running club. 
+![Responsive Mockup](./docs/screenshots/am-i-responsive.PNG)
 
-![Responsice Mockup](https://github.com/lucyrush/readme-template/blob/master/media/love_running_mockup.png)
+# Goals
+
+## User's Goals
+
+- Play a quiz to test the knowledge of world countries' names.
+- Learn more countries' names by the end of the quiz.
+- Achieve top scores and be published on the scoreboard.
+
+## Site's Owner Goals
+- Build an entertainment channel to provide educational content in a question-answer shape.
+- Provide an interactive user experience.
 
 ## Features 
 
 In this section, you should go over the different parts of your project, and describe each in a sentence or so. You will need to explain what value each of the features provides for the user, focusing on who this website is for, what it is that they want to achieve and how your project is the best way to help them achieve these things.
+value to use, who this for, what they want to achieve
 
 ### Existing Features
 
