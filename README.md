@@ -38,86 +38,117 @@ The site is targeted towards people who love geography and want to learn more ab
 # User Stories
 
 ## User's Stories
-- I want to know the quiz playing tips.
-- I want to be able to use any name to start the quiz.
-- I want to play a limited number of questions.
-- I want to be able to find a hint for the correct answer.
-- I want to use either the pointer or the keyboard to choose the correct answer.
-- I want to see my score, progress and consumed time while playing the quiz.
-- I want to see my final score and finishing time at the end of the quiz.
-- I want to know my ranking among other users at the end of the quiz
-- I want to be able to contact the site's owner and provide comments about the quiz.
+1. I want to know the quiz playing tips.
+2. I want to be able to use any name to start the quiz.
+3. I want to play a limited number of questions.
+4. I want to be able to find a hint for the correct answer.
+5. I want to use either the pointer or the keyboard to choose the correct answer.
+6. I want to see my score, progress and time while playing the quiz.
+7. I want to see my final score and finishing time at the end of the quiz.
+8. I want to know my ranking among other users at the end of the quiz
+9. I want to be able to contact the site's owner and provide comments about the quiz.
 
 ## Site's Owner Stories
-- I want the user to deal with an easy-to-navigate and fully responsive site.
-- I want the user to know the correct answer at the end of each round.
-- I want the user to be motivated and challenged.
-- I want a transparent score tracking system.
-- I want the user to be able to send me his feedback and comments.
+10. I want the user to deal with an easy-to-navigate and fully responsive site.
+11. I want the user to know the correct answer at the end of each round.
+12. I want the user to be motivated and challenged.
+13. I want a transparent score tracking system.
+14. I want the user to be able to send me his feedback and comments.
 
 [(Back to top)](#table-of-contents)
-
-
-
 
 # Features 
 
 value to use, who this for, what they want to achieve
 
-### Existing Features
+## Existing Features
 
-- __Navigation Bar__
-  - 
-  - Providing an easy . 
+1. __Navigation Bar__
+  - Built to ease the site navigation and as the site is a single-page application the navigation bar provides the user with quick access to all page sections in addition to contactus fetched form.
+  - Shows the site logo and interacts with the user pointer movement.
+  - *Covered User stories: 10*
 
-![Nav Bar](https://github.com/lucyrush/readme-template/blob/master/media/love_running_nav.png)
+  ![Nav Bar](./docs/screenshots/screen-nav.PNG)
 
-- __The landing page image__
+2. __The Quiz Starting Form__
+ 
+  - The quiz starting point, includes:
+    - Nick Name:
+        - input for the user to enter a name.
+        - user is required to fill in this input, in case he tried to start the quiz before filling it a feedback message will pop up to notify the user about it.
+    - Levels:
+        - a group of buttons to let the user choose the suitable level.
+    - Start button:
+        - to allow the user to start the quiz when he is ready to.
+        - clicking on this button shows the quiz page, with scrolling to the question area.
+  - *Covered User stories: 2,3*
 
-  - The landing includes a photograph with text overlay to allow the user to see exactly which location this site would be applicable to. 
-  - This section introduces the user to Love Running with an eye catching animation to grab their attention
+  ![Starting Form](./docs/screenshots/screen-start.PNG)
 
-![Landing Page](https://github.com/lucyrush/readme-template/blob/master/media/love_running_landing.png)
+3. __The Quick Tips__
 
-- __Club Ethos Section__
+  - Text block to provide the user with the required information about the quiz rules and tricks.
+  - Describes the way to play the quiz and the points system in addition to how ranking works.
+  - *Covered User stories: 1*
 
-  - The club ethos section will allow the user to see the benefits of joining the Love Running meetups, as well as the benefits of running overall. 
-  - This user will see the value of signing up for the Love Running meetups. This should encourage the user to consider running as their form of exercise. 
+  ![Quick Tips](./docs/screenshots/screen-tips.PNG)
 
-![Club Ethos](https://github.com/lucyrush/readme-template/blob/master/media/love_running_ethos.png)
+4. __The Scoreboard__
+  
+  - Score tracking screen which shows the top ten high scorer users in different levels.
+  - Top ranking for users who scored more points in less time.
+  - *Covered User stories: 8,12,13*
+  ![Scoreboards](./docs/screenshots/screen-tips.PNG)
 
-- __Meetup Times section__
+5. __The Quiz Page__
 
-  - This section will allow the user to see exactly when the meetups will happen, where they will be located and how long the run will be in kilometers. 
-  - This section will be updated as these times change to keep the user up to date. 
+  - Opens at the top of the page and contains separated sections as follows:
+   - Globe map:
+        - HighCharts™️ world map to provide the position and a hint of the questioned region.
+        - *Covered User stories: 4*
+   - Quiz info area:
+        - Progress bar and questions counter: indicates the user's progress while doing the quiz.
+        - Score pad: to help the user to track his score.
+        - Timer: live consumed time tracking.
+        - *Covered User stories: 6,13*
+   - Question area:
+        - Question: fixed question text contains the capital and the continent names of the questioned region, styled to be clear and easy to read.
+        - Answer buttons: four possible answers choices,
+        - The user could choose the correct answer using the pointer or the keyboard shortcut ALT+answer number for quick selection.
+        - Answer button style changed at the end of each round to indicate the correct answer and the wrong answer if the user chose a different answer.
+        - *Covered User stories: 4,5,11*
 
-![Meetup Times](https://github.com/lucyrush/readme-template/blob/master/media/love_running_times.png)
+  ![Question Page](./docs/screenshots/screen-question.PNG)
 
-- __The Footer__ 
+6. __The Score Page__
 
-  - The footer section includes links to the relevant social media sites for Love Running. The links will open to a new tab to allow easy navigation for the user. 
-  - The footer is valuable to the user as it encourages them to keep connected via social media
+  - Provide the user with his final score and finishing.
+  - The user's ranking among all previous scorers.
+  - The trophy acquired by the user based on his ranking.
+  - Links to share the final score on the user's social media accounts.
+  - *Covered User stories: 7,8,12,13*
 
-![Footer](https://github.com/lucyrush/readme-template/blob/master/media/love_running_footer.png)
+  ![Score Page](./docs/screenshots/screen-finalscore.PNG)
+  
+7. __The Contact Us Form__
 
-- __Gallery__
+  - a Form to help user provide his comments of the quiz and site experience.
+  - a Feedback message shown at the form submission, indicates the mail status.
+  - *Covered User stories: 9,14*
 
-  - The gallery will provide the user with supporting images to see what the meet ups look like. 
-  - This section is valuable to the user as they will be able to easily identify the types of events the organisation puts together. 
+  ![Contact Us](./docs/screenshots/screen-contactus.PNG)
+  
+  ![Contact Us - Feedback](./docs/screenshots/screen-contactus-feedback.PNG)
 
-![Gallery](https://github.com/lucyrush/readme-template/blob/master/media/love_running_gallery.png)
 
-- __The Sign Up Page__
+8. __The Footer__
 
-  - This page will allow the user to get signed up to Love Running to start their running journey with the community. The user will be able specify if they would like to take part in road, trail or both types of running. The user will be asked to submit their full name and email address. 
+  - Includes the option of mailing the site's owner and links to the site-related social media accounts/ pages.
+  - *Covered User stories: 10*
 
-![Sign Up](https://github.com/lucyrush/readme-template/blob/master/media/love_running_signup.png)
+  ![Footer](./docs/screenshots/screen-footer.PNG)
 
-For some/all of your features, you may choose to reference the specific project files that implement them.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
-### Features Left to Implement
+## Features Left to Implement
 
 - Another feature idea
 
