@@ -22,17 +22,17 @@ header {
 }
 
 /* Nav */
-.navbar-custom {
-    background-color: #03AEB8;
-    color: #FFB402;
+#navbar-custom {
+    color: #03AEB8;
 }
 
-.navbar-custom a {
+#navbar-custom a {
     color: inherit;
 }
 
-.navbar-nav a:hover {
-    color: #fff;
+
+#navbar-custom .navbar-nav a:hover {
+    color: #FFB402;
     font-size: 150%;
 }
 
@@ -63,6 +63,7 @@ h3 {
 .container-overlay {
     background: rgba(252, 70, 98, 0.90);
     padding: 5vh 5px;
+    min-height: 90vh;
 }
 
 .question-container-overlay {
@@ -119,8 +120,7 @@ h3 {
 /* Footer */
 footer {
     margin-top: 5%;
-    background-color: #03AEB8;
-    color: #FFB402;
+    color: #03AEB8;
     text-align: center;
 }
 
@@ -139,7 +139,7 @@ footer a {
 }
 
 footer a:hover {
-    color: #fff;
+    color: #FFB402;
 }
 
 /* Media Queries */
@@ -158,7 +158,7 @@ footer a:hover {
 
     /* Overlays */
     .container-overlay {
-        min-height: 50vh;
+        min-height: 80vh;
     }
 
 }
@@ -167,7 +167,7 @@ footer a:hover {
 
     /* Section */
     .section {
-        margin-top: 5%;
+        margin-top: 10%;
     }
 
     /* Config Form */
@@ -179,6 +179,19 @@ footer a:hover {
 
     /* Overlays */
     .container-overlay {
-        min-height: 40vh;
+        min-height: 60vh;
+    }
+}
+
+@media only screen and (min-width : 1224px) {
+
+    /* Section */
+    .section {
+        margin-top: 10%;
+    }
+
+    /* Overlays */
+    .container-overlay {
+        min-height: 70vh;
     }
 }
