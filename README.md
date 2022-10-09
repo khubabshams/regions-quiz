@@ -1,4 +1,5 @@
 ![RegionsQuiz Logo](./docs/screenshots/logo.PNG)
+![Responsive Mockup](./docs/screenshots/am-i-responsive.PNG)
 
 # Table of Contents
 
@@ -12,7 +13,7 @@
     - [Site's Owner Stories](#sites-owner-stories)
 - [Features](#features)
     - [Navigation Bar](#navigation-bar)
-    - [The Quiz Starting Form](#tquiz-starting-form)
+    - [Quiz Starting Form](#quiz-starting-form)
     - [Quick Tips](#quick-tips)
     - [Scoreboards](#scoreboards)
     - [Quiz Page](#quiz-page)
@@ -35,7 +36,6 @@
 RegionQuiz is a site to test users' information of regions' names and helps them to grow their knowledge in a challenging interactive way. 
 The site is targeted towards people who love geography and want to learn more about the world's regions and have fun at the same time. 
 
-![Responsive Mockup](./docs/screenshots/am-i-responsive.PNG)
 
 [(Back to top)](#table-of-contents)
 
@@ -169,10 +169,24 @@ The site is targeted towards people who love geography and want to learn more ab
 
 # Testing 
 
-## Navigation Bar
-  - Responsiveness to different screen sizes is achieved by using a collapsible navigation bar triggered on small screens.
+- The website has been tested on Firefox and Safari browsers as well as on different devices' viewports using Google Chrome DevTools on Google Chrome browser, with no errors reported. 
+- Testing Devices:
+  - Dell Latitude 3570 Laptop.
+  - Apple iPhone 6s.
+  - Huawei Mate 20 Lite.
+
+## Featues Testing
+
+### Navigation Bar
+  - Depends on screen's viewport size navigation bar changes on small screens to be collapsible and provide the required responsivity.
 
   ![Navigation on Mobile Screen](./docs/screenshots/screen-nav-mobile.PNG)
+### Quiz Starting Form
+  - Validation on the contact form has been tested to ensure that the user must use a name to be published on scoreboard by the end of the quiz.
+  ![No Name on Start Form](./docs/screenshots/screen-start-no-name.PNG)
+
+  - Nick name autofocus helps user to enter his name and press Enter to start without the need to move the pointer, which ease accessibility and enhance the user experience, level selection could be done by Tab and Arrows too.
+
 
 ## Lighthouse Report
 
