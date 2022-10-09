@@ -11,6 +11,15 @@
     - [User's Stories](#users-stories)
     - [Site's Owner Stories](#sites-owner-stories)
 - [Features](#features)
+    - [Navigation Bar](#navigation-bar)
+    - [The Quiz Starting Form](#tquiz-starting-form)
+    - [Quick Tips](#quick-tips)
+    - [Scoreboards](#scoreboards)
+    - [Quiz Page](#quiz-page)
+    - [Score Page](#score-page)
+    - [Contact Us Form](#contactus-form)
+    - [Footer](#footer)
+- [Testing](#testing)
 
 
 # Overview
@@ -60,10 +69,6 @@ The site is targeted towards people who love geography and want to learn more ab
 
 # Features 
 
-value to use, who this for, what they want to achieve
-
-## Existing Features
-
 1. __Navigation Bar__
   - Built to ease the site navigation and as the site is a single-page application the navigation bar provides the user with quick access to all page sections in addition to contactus fetched form.
   - Shows the site logo and interacts with the user pointer movement.
@@ -71,7 +76,7 @@ value to use, who this for, what they want to achieve
 
   ![Nav Bar](./docs/screenshots/screen-nav.PNG)
 
-2. __The Quiz Starting Form__
+2. __Quiz Starting Form__
  
   - The quiz starting point, includes:
     - Nick Name:
@@ -86,7 +91,7 @@ value to use, who this for, what they want to achieve
 
   ![Starting Form](./docs/screenshots/screen-start.PNG)
 
-3. __The Quick Tips__
+3. __Quick Tips__
 
   - Text block to provide the user with the required information about the quiz rules and tricks.
   - Describes the way to play the quiz and the points system in addition to how ranking works.
@@ -94,14 +99,18 @@ value to use, who this for, what they want to achieve
 
   ![Quick Tips](./docs/screenshots/screen-tips.PNG)
 
-4. __The Scoreboard__
+4. __Scoreboards__
   
   - Score tracking screen which shows the top ten high scorer users in different levels.
   - Top ranking for users who scored more points in less time.
   - *Covered User stories: 8,12,13*
-  ![Scoreboards](./docs/screenshots/screen-tips.PNG)
+  ![Scoreboards](./docs/screenshots/screen-scoreboard.PNG)
+  
+  - Google Firestore used to store users' score data. 
+  - Each firestore document includes: username, level, time, and score.
+  ![Scoreboards Firestore Document](./docs/screenshots/screen-firestore.PNG)
 
-5. __The Quiz Page__
+5. __Quiz Page__
 
   - Opens at the top of the page and contains separated sections as follows:
    - Globe map:
@@ -121,7 +130,7 @@ value to use, who this for, what they want to achieve
 
   ![Question Page](./docs/screenshots/screen-question.PNG)
 
-6. __The Score Page__
+6. __Score Page__
 
   - Provide the user with his final score and finishing.
   - The user's ranking among all previous scorers.
@@ -131,7 +140,7 @@ value to use, who this for, what they want to achieve
 
   ![Score Page](./docs/screenshots/screen-finalscore.PNG)
   
-7. __The Contact Us Form__
+7. __Contact Us Form__
 
   - a Form to help user provide his comments of the quiz and site experience.
   - a Feedback message shown at the form submission, indicates the mail status.
@@ -142,18 +151,14 @@ value to use, who this for, what they want to achieve
   ![Contact Us - Feedback](./docs/screenshots/screen-contactus-feedback.PNG)
 
 
-8. __The Footer__
+8. __Footer__
 
   - Includes the option of mailing the site's owner and links to the site-related social media accounts/ pages.
   - *Covered User stories: 10*
 
   ![Footer](./docs/screenshots/screen-footer.PNG)
 
-## Features Left to Implement
-
-- Another feature idea
-
-## Testing 
+# Testing 
 
 In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your project’s features and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
 
@@ -163,63 +168,70 @@ You should also mention in this section any interesting bugs or problems you dis
 
 If this section grows too long, you may want to split it off into a separate file and link to it from here.
 
+## Navigation Bar
+  - 
+  - Responsiveness to different screen size achieved by using a collapsible navigation bar triggered on small screens.
 
-### Validator Testing 
+  ![Navigation on Mobile Screen](./docs/screenshots/screen-nav-mobile.PNG)
+
+## Lighthouse Report
+
+### Desktop
+  ![Desktop Lighthouse Report](./docs/validation/lighthouse-index.PNG)
+
+### Mobile
+  ![Mobile Lighthouse Report](./docs/validation/lighthouse-index-mobile.PNG)
+
+## Validator Testing 
 
 - HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcode-institute-org.github.io%2Flove-running-2.0%2Findex.html)
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fkshamse.github.io%2Fregions-quiz%2Findex.html)
+  ![W3C Validator Report](./docs/validation/w3c-validation.PNG)
+
 - CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fvalidator.w3.org%2Fnu%2F%3Fdoc%3Dhttps%253A%252F%252Fcode-institute-org.github.io%252Flove-running-2.0%252Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#css)
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fkshamse.github.io%2Fregions-quiz%2Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+  ![(Jigsaw) Validator Report](./docs/validation/jigsaw-validation.PNG)
 
-### Unfixed Bugs
+- JavaScript
+  - JSHint report has been generated for quiz javascript code.
+  ![JSHint Report](./docs/validation/js-hint-validation.PNG)
 
-You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not a valid reason to leave bugs unfixed. 
+
+## Unfixed Bugs
+
+- Radio Button Responsiveness: bootstrap radio button width size not affected by the mobile screen, and overflows to exceed the parent limit.
 
 ## Deployment
-
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub) 
 
 - The site was deployed to GitHub pages. The steps to deploy are as follows: 
   - In the GitHub repository, navigate to the Settings tab 
   - From the source section drop-down menu, select the Master Branch
   - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment. 
 
-The live link can be found here - https://code-institute-org.github.io/love-running-2.0/index.html 
+The live link can be found here - https://kshamse.github.io/regions-quiz/index.html
 
+# Credits 
 
-## Credits 
+## Media
+- The icons used in this site were from [Font Awesome](https://fontawesome.com/).
+- Site's favicons generated by [Real Favicon Generator](https://realfavicongenerator.net/).
+- Background photo has been downloaded from Pexels, uploaded by [Lara Jameson](https://www.pexels.com/photo/toy-flags-pinned-on-world-map-8828610/).
 
-In this section you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
+## Code
+- The globe map on question page source is the HighCharts blog uploaded by [Mustapha Mekhatria](https://www.highcharts.com/blog/code-examples/planet-earth/) and [The JSFiddle Reference](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/maps/demo/topojson-projection).
+- Countries data generated by [The HTML Code Generator](https://www.html-code-generator.com/javascript/json/country-names).
+- Bootstrap setup and components has been done by help of [The Bootstrap Official Documentation](https://getbootstrap.com/docs/5.0/getting-started/introduction/).
+- Firstore installation based on [The Firestore Setup Page](https://firebase.google.com/docs/web/setup).
+- I get the queries on firestore DB done by following [The Firestore Queries Tutorial](https://firebase.google.com/docs/firestore/query-data/queries).
+- Contact Us mailing is provided by [EmailJs](https://www.emailjs.com) page built by using [Send Form API](https://www.emailjs.com/docs/rest-api/send-form/)
+- Navigation bar source is [The W3School Tutorial](https://www.w3schools.com/bootstrap5/tryit.asp?filename=trybs_navbar_collapse). 
+- Creating keyboard shortcut by Javascript is a [Post on DelftStack](https://www.delftstack.com/howto/javascript/javascript-keyboard-shortcut/).
+- AJAX content loading is based on [Display Dynamic Content Tutorial on Code-Boxx](https://code-boxx.com/display-dynamic-content-html/).
+- Export/ Import Javascript functions is an answer provided by [connexo on Stackoverflow](https://stackoverflow.com/questions/57382295/how-can-i-import-a-variable-from-another-javascript-file).
+- Function of array shuffling were taken from [Fedingo](https://fedingo.com/how-to-shuffle-array-in-javascript/) .
+- Social media share links generation inspired by [AllisonC Answer](https://stackoverflow.com/questions/6138780/facebook-share-button-and-custom-text) and [Hubspot Blog By Anum Hussain](https://blog.hubspot.com/marketing/how-to-generate-click-to-tweet-links-cta-quick-tip-ht).
+- Importing firebase functions by URLs is a solution provided by [Vatsal A Mehta on Stackoverflow](https://stackoverflow.com/questions/70730990/why-unable-to-resolve-module-specifier-firebase-app).
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/) has been used to discover Javascript errors and test site responsiveness.
+- This readme file is based on [Code Institute Readme Template](https://github.com/Code-Institute-Solutions/readme-template/blob/master/README.md) and edited with the help of [Navendu Pottekkat's Blog Post](https://towardsdatascience.com/how-to-write-an-awesome-readme-68bf4be91f8b).
 
-You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
-### Content 
-
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The photos used on the home and sign up page are from This Open Source site
-- The images used for the gallery page were taken from this other open source site
-
-
-Congratulations on completing your Readme, you have made another big stride in the direction of being a developer! 
-
-## Other General Project Advice
-
-Below you will find a couple of extra tips that may be helpful when completing your project. Remember that each of these projects will become part of your final portfolio so it’s important to allow enough time to showcase your best work! 
-
-- One of the most basic elements of keeping a healthy commit history is with the commit message. When getting started with your project, read through [this article](https://chris.beams.io/posts/git-commit/) by Chris Beams on How to Write  a Git Commit Message 
-  - Make sure to keep the messages in the imperative mood 
-
-- When naming the files in your project directory, make sure to consider meaningful naming of files, point to specific names and sections of content.
-  - For example, instead of naming an image used ‘image1.png’ consider naming it ‘landing_page_img.png’. This will ensure that there are clear file paths kept. 
-
-- Do some extra research on good and bad coding practices, there are a handful of useful articles to read, consider reviewing the following list when getting started:
-  - [Writing Your Best Code](https://learn.shayhowe.com/html-css/writing-your-best-code/)
-  - [HTML & CSS Coding Best Practices](https://medium.com/@inceptiondj.info/html-css-coding-best-practice-fadb9870a00f)
-  - [Google HTML/CSS Style Guide](https://google.github.io/styleguide/htmlcssguide.html#General)
-
-Getting started with your Portfolio Projects can be daunting, planning your project can make it a lot easier to tackle, take small steps to reach the final outcome and enjoy the process! 
+### Special thanks for my mentor Mr.Mo Shami for his continuos guidance and support. 
