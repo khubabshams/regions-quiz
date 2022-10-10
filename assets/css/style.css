@@ -153,6 +153,13 @@ footer a:hover {
     color: #FFB402;
 }
 
+/* 404 */
+#not-found h2 {
+    font-size: 250%;
+}
+#not-found h3 {
+    font-size: 200%;
+}
 /* Media Queries */
 @media only screen and (min-width: 768px) {
 

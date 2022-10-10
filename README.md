@@ -90,6 +90,7 @@ The site is targeted towards people who love geography and want to learn more ab
 12. I want the user to be motivated and challenged.
 13. I want a transparent score-tracking system.
 14. I want the user to be able to send me his feedback and comments.
+15. I want the user to load a 404 styled page when he entered an invalid internal link.
 
 [(Back to top)](#table-of-contents)
 
