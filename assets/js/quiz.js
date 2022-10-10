@@ -24,27 +24,31 @@ import {
 
 // DOM loaded event listener
 document.addEventListener("DOMContentLoaded", function () {
-
-    loadScoreboards();
+    if (document.getElementById("scoreboards")) {
+        loadScoreboards();
+    }
 
     let configForm = document.getElementById("config-form");
-    configForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+    if (configForm) {
+        configForm.addEventListener("submit", function (event) {
+            event.preventDefault();
 
-        let nickName = document.getElementById("nick-name").value;
-        let level = document.querySelector('input[name="level"]:checked').value;
+            let nickName = document.getElementById("nick-name").value;
+            let level = document.querySelector('input[name="level"]:checked').value;
 
-        localStorage.setItem('nickName', `${nickName}`);
-        localStorage.setItem('level', `${level}`);
+            localStorage.setItem('nickName', `${nickName}`);
+            localStorage.setItem('level', `${level}`);
 
-        runQuiz();
-    });
+            runQuiz();
+        });
+
+    }
 
     let contactButtons = document.getElementsByClassName("contactus");
-    for(let contactButton of contactButtons){
+    for (let contactButton of contactButtons) {
         contactButton.addEventListener("click", function (event) {
             event.preventDefault();
-    
+
             openContactus();
         });
     }
@@ -57,7 +61,7 @@ function openContactus() {
         document.getElementById("quiz-main").outerHTML = response;
     }).then(() => {
         document.getElementById("quiz-main").scrollIntoView();
-        
+
         let contactForm = document.getElementById("contact-form");
         contactForm.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -123,7 +127,7 @@ function renderQuizInfo(score = 0, questionCounter = 1) {
     questionCounterElement.innerText = `${questionCounter}/${getTotalQuestions()}`;
 
     let progressElement = document.getElementById("progress");
-    progressElement.setAttribute("style", `width: ${Math.floor((questionCounter/getTotalQuestions())*100)}%`);
+    progressElement.setAttribute("style", `width: ${Math.floor((questionCounter / getTotalQuestions()) * 100)}%`);
 }
 /**
  * Load the question and answers and update quiz page, called the first quiz run and on next question action
@@ -146,7 +150,7 @@ function renderQuestionData() {
         answerbuttons[i].classList.remove("btn-danger");
         answerbuttons[i].classList.remove("btn-success");
 
-        answerbuttons[i].innerText = `${i+1}. ${questionData.answers[i].name}`;
+        answerbuttons[i].innerText = `${i + 1}. ${questionData.answers[i].name}`;
         answerbuttons[i].value = questionData.answers[i].id;
     }
 }
@@ -530,7 +534,7 @@ function getTotalQuestions() {
         default:
             totalQuestion = 10;
     }
-    
+
     return totalQuestion
 }
 /**
@@ -558,6 +562,6 @@ function shuffleArray(array) {
  * Get a random number in the country array range 
  * @returns {number} random number between 0 and country array length
  */
-function getRandomCountryIndex(){
+function getRandomCountryIndex() {
     return Math.floor(Math.random() * getAllCountriesListLength());
 }
