@@ -1,4 +1,9 @@
 [![RegionsQuiz Logo](./docs/design/logo.PNG)](https://kshamse.github.io/regions-quiz/index.html)
+
+**Developed By:** Khubab Shamsuddin
+
+[Live website link](https://kshamse.github.io/regions-quiz/index.html)
+
 ![Responsive Mockup](./docs/design/am-i-responsive.PNG)
 
 # Table of Contents
