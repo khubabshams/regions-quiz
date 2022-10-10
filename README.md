@@ -279,7 +279,7 @@ The site is targeted towards people who love geography and want to learn more ab
   ![(Jigsaw) Validator Report](./docs/validation/jigsaw-validation.PNG)
 
 - JavaScript
-  - JSHint report has been generated for javascript files:
+  - JSHint report has been generated for javascript files, undefined variables found but they are loaded form libraries basically:
     <details>
     <summary> quiz.js</summary>
     <img src="docs/validation/js-hint-quiz.PNG" alt="quiz.js JSHint Report">
