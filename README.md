@@ -266,7 +266,7 @@ The site is targeted towards people who love geography and want to learn more ab
 
 ## Interesting Solved Problems
 
-- EmailJS send form: `formData = new FormData(contactForm)` returns an empty `FormData` object, it's probably a result of putting this code wrapped by `AJAX function`.
+- EmailJS send form: `formData = new FormData(contactForm)` returns an empty `FormData` object, it's probably a result of putting this code wrapped by `AJAX function`, solved by getting each input value separately.
 
 - Firestore multiple 'where' conditions: I tried different ways to add a couple of conditions inside the `where` parentheses inside the `query` but it keeps getting me errors, at the end turns out that all Firebase services originally are functions and therefore `query` is a function which receives a number of parameters (functions) and in case of `where` function it could receive more than one [Reference](https://firebase.google.com/docs/firestore/query-data/queries#compound_queries).
 
@@ -323,7 +323,7 @@ The live link can be found here - https://kshamse.github.io/regions-quiz/index.h
 
 - This readme file is based on [Code Institute Readme Template](https://github.com/Code-Institute-Solutions/readme-template/blob/master/README.md) and edited with the help of [Navendu Pottekkat's Blog Post](https://towardsdatascience.com/how-to-write-an-awesome-readme-68bf4be91f8b).
 
-- Grammatical errors and typos on this file were discoverd and corrected by [Grammarly](https://app.grammarly.com/).
+- Grammatical errors and typos on this file were discovered and corrected by [Grammarly](https://app.grammarly.com/).
  
 ## Special Thanks 
 - to mentor Mr Mo Shami for his continuous guidance and support.
