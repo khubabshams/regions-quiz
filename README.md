@@ -41,6 +41,7 @@
 - [Credits](#credits)
     - [Media](#media)
     - [Code](#code)
+    - [Special Thanks](special-thanks)
 
 
 # Overview
@@ -192,53 +193,53 @@ The site is targeted towards people who love geography and want to learn more ab
 
 ### Colors and Fonts
 
-- Site designed based on a group of colour scheme that reflects both fun and educational content.
+- Site designed based on a group of colour schemes that reflects both fun and educational content.
 
 ![Colour Palette](./docs/design/colour-palette.PNG)
 
-- Pairing 'Roboto' font for headings and 'Montserrat' for rest of the text implemented on this site.
+- Pairing 'Roboto' font for headings and 'Montserrat' for the rest of the text implemented on this site.
 
 ## Features Testing
 
 ### Navbar
-  - Depends on screen's viewport size navigation bar changes on small screens to be collapsible and provide the required responsivity.
+  - Depending on the screen's viewport size navigation bar changes on small screens to be collapsible and provide the required responsivity.
 
   ![Navigation on Mobile Screen](./docs/screenshots/screen-nav-mobile.PNG)
 
 ### Quiz Form
-  - Validation on the contact form has been tested to ensure that the user must use a name to be published on scoreboard by the end of the quiz.
+  - Validation on the contact form has been tested to ensure that the user must use a name to be published on the scoreboard by the end of the quiz.
   ![No Name on Start Form](./docs/screenshots/screen-start-no-name.PNG)
 
-  - With autofocus enabled the user could enter his name and press Enter to start without the need to move the pointer, which ease accessibility and enhance the user experience, level selection also could be done by Tab and Arrows.
+  - With autofocus enabled the user could enter his name and press Enter to start without the need to move the pointer, which eases accessibility and enhance the user experience, level selection also could be done by Tab and Arrows.
 
 ### Tips
-  - Written to gurantee that the user will have a clear understanding of quiz rules and tricks.
+  - Written to guarantee that the user will have a clear understanding of quiz rules and tricks.
 
 ### Scoreboard
-  - Only top ten high scorers records shown, which gives the user the motivation to improve his result to be published on scoreboards.
+  - Only the top ten high scorers' records are shown, which gives the user the motivation to improve his result to be published on scoreboards.
   - Users score data query and render done after the page totally loaded thus it didn't affect the page loading.
 
 ### Quiz
-  - Country position is shown on the world map for the most countries (depends on the country size on the map).
-  - Hovering the pointer on question region show a hint of country code, and that will let the user recognize the correct answer.
-  - Keyboard shortcuts tested and works as expected, provide a practical way to solve the quiz in the shortest amount of time.
-  - When the user selected an answer all answer button changed to be disabled to prevent a second selection, and correct answer coloured in green and the wrong (if selected) in red.
-  - Score and progress is updated when a question round started, and the timer provide live update, helping the user to make sure he get a fair assessment.
+  - Country position is shown on the world map for most countries (depends on the country size on the map).
+  - Hovering the pointer on the question region show a hint of country code, and that will let the user recognize the correct answer.
+  - Keyboard shortcuts tested and works as expected, providing a practical way to solve the quiz in the shortest amount of time.
+  - When the user selected an answer all answer buttons are changed to be disabled to prevent a second selection, and the correct answer is coloured in green and the wrong (if selected) in red.
+  - Score and progress are updated when a question round started, and the timer provides a live update, helping the user to make sure he gets a fair assessment.
   ![Question Answered](./docs/screenshots/screen-question-answered.png)
 
 ### Score
-  - Final score, time and rankings were tested and they works as expected.
-  - Trophy icon shown as a reward for high scorers, top three ranked users gets a coloured cup and a medal given for the top ten ranked.
+  - Final score, time and rankings were tested and they work as expected.
+  - Trophy icon shown as a reward for high scorers, the top three ranked users get a coloured cup and a medal given to the top ten rankings.
   - Social media sharing will encourage potential users to challenge themselves and take the quiz.
-  - Rewards system triggers motivation and challenge and keeps user trying to get most valuble trophy or achive top rankings.
+  - Rewards system triggers motivation and challenge and keeps users trying to get the most valuable trophy or achieve top rankings.
 
 ### Contact Us
-  - Users' communications with site's owner achieved through contact form.
-  - User must provide an email in a correct email format in order to send his feedback.
+  - Users' communications with the site's owner are achieved through the contact form.
+  - The user must provide an email in the correct email format in order to send his feedback.
   ![User's Invalid Format Email](./docs/screenshots/screen-invalid-email-format.PNG)
 
 ### Footer Links
-  - All social media links has been tested and its' working properly.
+  - All social media links have been tested and it is working properly.
   - Contact us link opens the contact us form and scroll the view to the form on top.
 
 ## Lighthouse Report
@@ -267,7 +268,7 @@ The site is targeted towards people who love geography and want to learn more ab
 
 - EmailJS send form: `formData = new FormData(contactForm)` returns an empty `FormData` object, it's probably a result of putting this code wrapped by `AJAX function`.
 
-- Firestore multible where conditions: I tried different ways to add a couple of conditions inside the `where` parentheses inside the `query` but it keeps get me errors, at the end turns out that all Firebase sevices are basically functions and therefore `query` is a function which receives number of parameters (functions) and in case of `where` function it could receive more than one [Reference](https://firebase.google.com/docs/firestore/query-data/queries#compound_queries).
+- Firestore multiple 'where' conditions: I tried different ways to add a couple of conditions inside the `where` parentheses inside the `query` but it keeps getting me errors, at the end turns out that all Firebase services originally are functions and therefore `query` is a function which receives a number of parameters (functions) and in case of `where` function it could receive more than one [Reference](https://firebase.google.com/docs/firestore/query-data/queries#compound_queries).
 
 ## Unfixed Bugs
 
@@ -275,10 +276,10 @@ The site is targeted towards people who love geography and want to learn more ab
 
 ## Deployment
 
-- Site deployed on Github Pages, with following steps:
+- Site deployed on Github Pages, with the following steps:
   - On the project repository open `Settings`.
-  - On left sidebar click on `Pages`.
-  - Keep the `source` drop-down on `Deploy from a branch`, select the `main` branch.
+  - On the left sidebar click on `Pages`.
+  - Keep the `source` drop-down on `Deploy from a branch`, and select the `main` branch.
   - Page will be refreshed automatically and the site link will appear on the top.
 
 The live link can be found here - https://kshamse.github.io/regions-quiz/index.html, or by clicking on the logo at the top of this page. 
@@ -321,5 +322,8 @@ The live link can be found here - https://kshamse.github.io/regions-quiz/index.h
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/) has been used to discover Javascript errors and test site responsiveness.
 
 - This readme file is based on [Code Institute Readme Template](https://github.com/Code-Institute-Solutions/readme-template/blob/master/README.md) and edited with the help of [Navendu Pottekkat's Blog Post](https://towardsdatascience.com/how-to-write-an-awesome-readme-68bf4be91f8b).
+
+- Grammatical errors and typos on this file were discoverd and corrected by [Grammarly](https://app.grammarly.com/).
  
-### Special thanks to mentor Mr Mo Shami for his continuous guidance and support.
+## Special Thanks 
+- to mentor Mr Mo Shami for his continuous guidance and support.
