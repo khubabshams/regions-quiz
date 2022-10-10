@@ -154,12 +154,18 @@ footer a:hover {
 }
 
 /* 404 */
-#not-found h2 {
+.not-found {
+    margin-top: 20%;
+}
+
+.not-found h2 {
     font-size: 250%;
 }
-#not-found h3 {
+
+.not-found h3 {
     font-size: 200%;
 }
+
 /* Media Queries */
 @media only screen and (min-width: 768px) {
 

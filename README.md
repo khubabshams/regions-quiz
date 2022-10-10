@@ -38,6 +38,7 @@
       - [Score Page](#score)
       - [Contact Us Form](#contact-us)
       - [Footer](#footer-links)
+      - [404 Page](#404-page)
     - [Lighthouse Report](#lighthouse-report)
     - [Validators Testing](#validators-testing)
     - [Interesting Solved Problems](#interesting-solved-problems)
@@ -184,6 +185,14 @@ The site is targeted towards people who love geography and want to learn more ab
 
   ![Footer](./docs/screenshots/screen-footer.PNG)
 
+## Page 404
+
+  - Built to provide feedback for the user who tried to access an un-supported URL.
+  - *Covered User stories: 15*
+
+  ![404](./docs/screenshots/screen-404.PNG)
+
+
 [(Back to top)](#table-of-contents)
 
 # Testing 
@@ -248,6 +257,8 @@ The site is targeted towards people who love geography and want to learn more ab
   - All social media links have been tested and it is working properly.
   - Contact us link opens the contact us form and scroll the view to the form on top.
 
+### 404 Page
+  - Redirection to the 404 page when the user tries to access a site page with an invalid link working as expected.
 ## Lighthouse Report
 
 - Desktop
