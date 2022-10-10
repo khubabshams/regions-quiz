@@ -18,12 +18,24 @@
     - [Scoreboards](#scoreboards)
     - [Quiz Page](#quiz-page)
     - [Score Page](#score-page)
-    - [Contact Us Form](#contactus-form)
+    - [Contact Us Form](#contact-us-form)
     - [Footer](#footer)
 - [Testing](#testing)
+    - [Design](#design)
+      - [Responsiveness](#responsiveness)
+      - [Colors & Fonts](#colors-and-fonts)
+    - [Features Testing](#features-testing)
+      - [Navigation Bar](#navbar)
+      - [Quiz Starting Form](#quiz-form)
+      - [Quick Tips](#tips)
+      - [Scoreboards](#scoreboard)
+      - [Quiz Page](#quiz)
+      - [Score Page](#score)
+      - [Contact Us Form](#contact-us)
+      - [Footer](#footer-links)
     - [Lighthouse Report](#lighthouse-report)
     - [Validators Testing](#validators-testing)
-    - [Interesting Bug Fixes](#interesting-bug-fixes)
+    - [Interesting Solved Problems](#interesting-solved-problems)
     - [Unfixed Bugs](#unfixed-bugs)
     - [Deployment](#deployment)
 - [Credits](#credits)
@@ -77,14 +89,14 @@ The site is targeted towards people who love geography and want to learn more ab
 
 # Features 
 
-## 1. __Navigation Bar__
+## Navigation Bar
   - Built to ease the site navigation and as the site is a single-page application the navigation bar provides the user with quick access to all page sections in addition to the contact us fetched form.
   - Shows the site logo and interacts with the user pointer movement.
   - *Covered User stories: 10*
 
   ![Nav Bar](./docs/screenshots/screen-nav.PNG)
 
-## 2. __Quiz Starting Form__
+## Quiz Starting Form
  
   - The quiz starting point, includes:
     - Nick Name:
@@ -99,7 +111,7 @@ The site is targeted towards people who love geography and want to learn more ab
 
   ![Starting Form](./docs/screenshots/screen-start.PNG)
 
-## 3. __Quick Tips__
+## Quick Tips
 
   - Text block to provide the user with the required information about the quiz rules and tricks.
   - Describes the way to play the quiz and the points system in addition to how ranking works.
@@ -107,7 +119,7 @@ The site is targeted towards people who love geography and want to learn more ab
 
   ![Quick Tips](./docs/screenshots/screen-tips.PNG)
 
-## 4. __Scoreboards__
+## Scoreboards
   
   - Score tracking screen which shows the top ten high scorer users in different levels.
   - Top ranking for users who scored more points in less time.
@@ -118,7 +130,7 @@ The site is targeted towards people who love geography and want to learn more ab
   - Each Firestore document includes username, level, time, and score.
   ![Scoreboards Firestore Document](./docs/screenshots/screen-firestore.PNG)
 
-## 5. __Quiz Page__
+## Quiz Page
 
   - Opens at the top of the page and contains separated sections as follows:
    - Globe map:
@@ -138,7 +150,7 @@ The site is targeted towards people who love geography and want to learn more ab
 
   ![Question Page](./docs/screenshots/screen-question.PNG)
 
-## 6. __Score Page__
+## Score Page
 
   - Provide the user with his final score and finishing.
   - The user's ranking among all previous scorers.
@@ -148,7 +160,7 @@ The site is targeted towards people who love geography and want to learn more ab
 
   ![Score Page](./docs/screenshots/screen-finalscore.PNG)
   
-## 7. __Contact Us Form__
+## Contact Us Form
 
   - a Form to help users provide their comments on the quiz and site experience.
   - a Feedback message shown at the form submission, indicates the mail status.
@@ -158,7 +170,7 @@ The site is targeted towards people who love geography and want to learn more ab
   
   ![Contact Us - Feedback](./docs/screenshots/screen-contactus-feedback.PNG)
 
-## 8. __Footer__
+## Footer
 
   - Includes the option of mailing the site's owner and links to the site-related social media accounts/ pages.
   - *Covered User stories: 10*
@@ -178,7 +190,7 @@ The site is targeted towards people who love geography and want to learn more ab
   - Apple iPhone 6s.
   - Huawei Mate 20 Lite.
 
-### Color & Font
+### Colors and Fonts
 
 - Site designed based on a group of colour scheme that reflects both fun and educational content.
 
@@ -186,27 +198,27 @@ The site is targeted towards people who love geography and want to learn more ab
 
 - Pairing 'Roboto' font for headings and 'Montserrat' for rest of the text implemented on this site.
 
-## Featues Testing
+## Features Testing
 
-### Navigation Bar
+### Navbar
   - Depends on screen's viewport size navigation bar changes on small screens to be collapsible and provide the required responsivity.
 
   ![Navigation on Mobile Screen](./docs/screenshots/screen-nav-mobile.PNG)
 
-### Quiz Starting Form
+### Quiz Form
   - Validation on the contact form has been tested to ensure that the user must use a name to be published on scoreboard by the end of the quiz.
   ![No Name on Start Form](./docs/screenshots/screen-start-no-name.PNG)
 
   - With autofocus enabled the user could enter his name and press Enter to start without the need to move the pointer, which ease accessibility and enhance the user experience, level selection also could be done by Tab and Arrows.
 
-### Quick Tips
-  - Written to gurantee that the user will have a clear understanding of quiz rules.
+### Tips
+  - Written to gurantee that the user will have a clear understanding of quiz rules and tricks.
 
-### Scoreboards
+### Scoreboard
   - Only top ten high scorers records shown, which gives the user the motivation to improve his result to be published on scoreboards.
   - Users score data query and render done after the page totally loaded thus it didn't affect the page loading.
 
-### Quiz Page
+### Quiz
   - Country position is shown on the world map for the most countries (depends on the country size on the map).
   - Hovering the pointer on question region show a hint of country code, and that will let the user recognize the correct answer.
   - Keyboard shortcuts tested and works as expected, provide a practical way to solve the quiz in the shortest amount of time.
@@ -214,18 +226,18 @@ The site is targeted towards people who love geography and want to learn more ab
   - Score and progress is updated when a question round started, and the timer provide live update, helping the user to make sure he get a fair assessment.
   ![Question Answered](./docs/screenshots/screen-question-answered.png)
 
-### Score Page
+### Score
   - Final score, time and rankings were tested and they works as expected.
   - Trophy icon shown as a reward for high scorers, top three ranked users gets a coloured cup and a medal given for the top ten ranked.
   - Social media sharing will encourage potential users to challenge themselves and take the quiz.
   - Rewards system triggers motivation and challenge and keeps user trying to get most valuble trophy or achive top rankings.
 
-### Contact Us Form
+### Contact Us
   - Users' communications with site's owner achieved through contact form.
   - User must provide an email in a correct email format in order to send his feedback.
   ![User's Invalid Format Email](./docs/screenshots/screen-invalid-email-format.PNG)
 
-### Footer
+### Footer Links
   - All social media links has been tested and its' working properly.
   - Contact us link opens the contact us form and scroll the view to the form on top.
 
@@ -253,11 +265,9 @@ The site is targeted towards people who love geography and want to learn more ab
 
 ## Interesting Solved Problems
 
-### EmailJS send form
-- The line `formData = new FormData(contactForm)` returns an empty `FormData` object, it's probably a result of putting this code wrapped by `AJAX function`.
+- EmailJS send form: `formData = new FormData(contactForm)` returns an empty `FormData` object, it's probably a result of putting this code wrapped by `AJAX function`.
 
-### Firestore multible where conditions
-- I tried different ways to add a couple of conditions inside the `where` parentheses inside the `query` but it keeps get me errors, at the end turns out that all Firebase sevices are basically functions and therefore `query` is a function which receives number of parameters (functions) and in case of `where` function it could receive more than one [Reference](https://firebase.google.com/docs/firestore/query-data/queries#compound_queries).
+- Firestore multible where conditions: I tried different ways to add a couple of conditions inside the `where` parentheses inside the `query` but it keeps get me errors, at the end turns out that all Firebase sevices are basically functions and therefore `query` is a function which receives number of parameters (functions) and in case of `where` function it could receive more than one [Reference](https://firebase.google.com/docs/firestore/query-data/queries#compound_queries).
 
 ## Unfixed Bugs
 
