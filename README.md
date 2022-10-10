@@ -279,8 +279,21 @@ The site is targeted towards people who love geography and want to learn more ab
   ![(Jigsaw) Validator Report](./docs/validation/jigsaw-validation.PNG)
 
 - JavaScript
-  - JSHint report has been generated for quiz javascript code.
-  ![JSHint Report](./docs/validation/js-hint-validation.PNG)
+  - JSHint report has been generated for javascript files:
+    <details>
+    <summary> quiz.js</summary>
+    <img src="docs/validation/js-hint-quiz.PNG" alt="quiz.js JSHint Report">
+    </details>
+
+    <details>
+    <summary> country_list.js</summary>
+    <img src="docs/validation/js-hint-country-list.PNG" alt="country_list.js JSHint Report">
+    </details>
+
+    <details>
+    <summary> highcharts_map.js</summary>
+    <img src="docs/validation/js-hint-highcharts.PNG" alt="highcharts_map.js JSHint Report">
+    </details>
 
 ## Interesting Solved Problems
 
