@@ -25,6 +25,7 @@
     - [Score Page](#score-page)
     - [Contact Us Form](#contact-us-form)
     - [Footer](#footer)
+    - [Page 404](#page-404)
 - [Testing](#testing)
     - [Design](#design)
       - [Responsiveness](#responsiveness)
