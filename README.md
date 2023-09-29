@@ -1,8 +1,8 @@
-[![RegionsQuiz Logo](./docs/design/logo.PNG)](https://kshamse.github.io/regions-quiz/index.html)
+[![RegionsQuiz Logo](./docs/design/logo.PNG)](https://khubabshams.github.io/regions-quiz/index.html)
 
 **Developed By:** Khubab Shamsuddin
 
-[Live website link](https://kshamse.github.io/regions-quiz/index.html)
+[Live website link](https://khubabshams.github.io/regions-quiz/index.html)
 
 ![Responsive Mockup](./docs/design/am-i-responsive.PNG)
 
@@ -271,11 +271,11 @@ The site is targeted towards people who love geography and want to learn more ab
 ## Validators Testing 
 
 - HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fkshamse.github.io%2Fregions-quiz%2Findex.html)
+  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fkhubabshams.github.io%2Fregions-quiz%2Findex.html)
   ![W3C Validator Report](./docs/validation/w3c-validation.PNG)
 
 - CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fkshamse.github.io%2Fregions-quiz%2Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fkhubabshams.github.io%2Fregions-quiz%2Findex.html&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
   ![(Jigsaw) Validator Report](./docs/validation/jigsaw-validation.PNG)
 
 - JavaScript
@@ -313,7 +313,7 @@ The site is targeted towards people who love geography and want to learn more ab
   - Keep the `source` drop-down on `Deploy from a branch`, and select the `main` branch.
   - Page will be refreshed automatically and the site link will appear on the top.
 
-The live link can be found here - https://kshamse.github.io/regions-quiz/index.html, or by clicking on the logo at the top of this page. 
+The live link can be found here - https://khubabshams.github.io/regions-quiz/index.html, or by clicking on the logo at the top of this page. 
 
 [(Back to top)](#table-of-contents)
 
